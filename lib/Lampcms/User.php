@@ -736,7 +736,7 @@ Interfaces\LinkedinUser
 		}
 
 		$iRep = $this->offsetGet('i_rep');
-		$iNew = max(1, ($iRep + (int)$iPoints));
+		$iNew = max(0, ($iRep + (int)$iPoints));
 
 		/**
 		 * @todo investigate where reputation is set directly
@@ -758,7 +758,7 @@ Interfaces\LinkedinUser
 	 */
 	public function getReputation(){
 
-		return max(1, $this->offsetGet('i_rep'));
+		return max(0, $this->offsetGet('i_rep'));
 	}
 
 
