@@ -249,7 +249,7 @@ You can change your password after you log in.
 		 * Initial reputation is always 1
 		 * @var int
 		 */
-		$aData['i_rep'] = 1;
+		$aData['i_rep'] = 0;
 		$aUser = array_merge($this->Registry->Geo->Location->data, $aData);
 
 		d('aUser: '.print_r($aUser, 1));
