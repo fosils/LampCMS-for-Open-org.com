@@ -183,7 +183,7 @@ class PostBlogger extends \Lampcms\Event\Observer
 
 			if(!empty($result) && is_numeric($result) ){
 				
-				$User->setReputation($reward);
+				$User->setProfitPoint($reward);
 
 				/**
 				 * Also save blogger post id to QUESTIONS or ANSWERS

@@ -108,9 +108,9 @@ class ProfileDiv extends LampcmsObject
 		$edit = '';
 		$lastActive = $this->User['i_lm_ts'];
 		$lastActive = (!empty($lastActive)) ? $lastActive : $this->User['i_reg_ts'];
-		$rep = $this->User->getReputation();
+		$pp = $this->User->getProfitPoint();
 
-		d('rep: '.$rep);
+		d('pp: '.$pp);
 		$uid = $this->User->getUid();
 		$isSameUser = ($this->Registry->Viewer->getUid() === $uid);
 		if($isSameUser || $this->Registry->Viewer->isModerator()){
@@ -124,7 +124,7 @@ class ProfileDiv extends LampcmsObject
 			'editLink' => $edit,
 			'username' => $this->User->username,
 			'avatar' => $this->User->getAvatarImgSrc(),
-			'reputation' => $rep,
+			'profitpoint' => $pp,
 			'name' => $this->User->getDisplayName(),
 			'genderLabel' => 'Gender',
 			'gender' => $this->getGender(),

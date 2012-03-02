@@ -109,7 +109,7 @@ class QuestionParser extends LampcmsObject
 	 * like spam filter so that via Submitted
 	 * it's possible to call getUserObject()
 	 * and get user object of question submitter, then
-	 * look at some personal stats like reputation score,
+	 * look at some personal stats like profit point,
 	 * usergroup, etc.
 	 *
 	 * @return object of type SubmittedQuestion

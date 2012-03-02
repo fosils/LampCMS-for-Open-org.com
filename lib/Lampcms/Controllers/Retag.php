@@ -198,7 +198,7 @@ class Retag extends WebPage
 	 * Check to make sure Viewer has permission
 	 * to retag.
 	 * Permitted to retag are: owner of question,
-	 * moderator/admin or user with reputation
+	 * moderator/admin or user with profit point
 	 *
 	 * @return object $this
 	 *
@@ -206,7 +206,7 @@ class Retag extends WebPage
 	protected function checkPermission(){
 
 		if(!\Lampcms\isOwner($this->Registry->Viewer, $this->Question)
-		&& ($this->Registry->Viewer->getReputation() < \Lampcms\Points::RETAG)){
+		&& ($this->Registry->Viewer->getProfitPoint() < \Lampcms\Points::RETAG)){
 
 			$this->checkAccessPermission('retag');
 		}

@@ -88,21 +88,21 @@ class tplU3 extends Lampcms\Template\Fast
 	protected static $vars = array(
 	'_id' => '', //1
 	'displayName' => '', //2
-	'i_rep' => '',  //3
+	'i_pp' => '',  //3
 	'avatar' => '', //4
 	'username' => '', //5
 	'since' => '', //6
 	'registered_l' => 'Registered', //7
 	'last_seen_l' => 'Last seen', //8
 	'last_seen' => '', //9
-	'reputation_l' => 'Current User Reputation score', //10
+	'profitpoint_l' => 'Current User Profit point', //10
 	'deleted' => '' //11
 	);
 
 
 	protected static $tpl = '
 	<div class="u3 %11$s" id="uid-%1$s">
-		<div title="%10$s %3$s" class="fl cb rounded3 i_rep ttt">%3$s</div>
+		<div title="%10$s %3$s" class="fl cb rounded3 i_pp ttt">%3$s</div>
 		<div class="avtr_bg fl mt-12 cb imgloader" style=\'background-image:url("%4$s");\'>&nbsp;</div>
 		<div class="u4 mt-12">
 			<a href="/users/%1$s/%5$s">%2$s</a><br>		    

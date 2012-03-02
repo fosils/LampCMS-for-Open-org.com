@@ -148,7 +148,7 @@ class Online extends \Lampcms\Event\Observer
 			$aData['avtr'] 		= $Viewer->getAvatarSrc();
 			$aData['profile'] 	= $Viewer->getProfileUrl();
 			$aData['role'] 		= $Viewer->getRoleId();
-			$aData['i_rep'] 	= $Viewer->getReputation();
+			$aData['i_pp'] 	= $Viewer->getProfitPoint();
 		}
 
 		$Mongo 	= $this->Registry->Mongo->getDb();

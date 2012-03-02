@@ -482,7 +482,7 @@ class Logintwitter extends WebPage
 		$aUser['oauth_token'] = $this->aUserData['oauth_token'];
 		$aUser['oauth_token_secret'] = $this->aUserData['oauth_token_secret'];
 		$aUser['twitter_uid'] = $this->aUserData['_id'];
-		$aUser['i_rep'] = 1;
+		$aUser['i_pp'] = 1;
 
 		$aUser = array_merge($this->Registry->Geo->Location->data, $aUser);
 

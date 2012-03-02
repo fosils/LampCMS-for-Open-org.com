@@ -498,7 +498,7 @@ class Client
 		'date_reg' => date('r'),
 		'role' => 'external_auth',
 		'lang' => $lang,
-		'i_rep' => 1,
+		'i_pp' => 1,
 		'tz' => TimeZone::getTZbyoffset($tzo),
 		'i_fv' => (false !== $intFv = Cookie::getSidCookie(true)) ? $intFv : time());
 

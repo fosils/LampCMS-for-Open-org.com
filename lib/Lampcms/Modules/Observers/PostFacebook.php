@@ -189,7 +189,7 @@ class PostFacebook extends \Lampcms\Event\Observer
 				 */
 				if(!empty($decoded['id'])){
 					$status_id = (string)$decoded['id'];
-					$User->setReputation($reward);
+					$User->setProfitPoint($reward);
 
 					/**
 					 * Now need to also record Facebook id

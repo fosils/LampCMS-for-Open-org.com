@@ -367,7 +367,7 @@ class Loginlinkedin extends WebPage
 		$this->aData['role'] = 'external_auth';
 
 		$this->aData['rs'] =  (false !== $sid) ? $sid : \Lampcms\String::makeSid();
-		$this->aData['i_rep'] = 1;
+		$this->aData['i_pp'] = 1;
 		$this->aData['lang'] = $this->Registry->getCurrentLang();
 		$this->aData['locale'] = $this->Registry->Locale->getLocale();
 

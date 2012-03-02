@@ -309,7 +309,7 @@ class Accept extends WebPage
 			/**
 			 * Need to set 'accepted' to null
 			 * in old answer because it is not longer an accepted one
-			 * and also decrease reputation for user who
+			 * and also decrease profit point for user who
 			 * owned formerly accepted answer
 			 */
 			$this->getOldAnswer()
@@ -355,7 +355,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Decrease reputation of user who
+	 * Decrease profit point of user who
 	 * owns the old answer
 	 *
 	 * @todo check current score and make sure
@@ -369,10 +369,10 @@ class Accept extends WebPage
 			$uid = $this->aOldAnswer['i_uid'];
 			if(!empty($uid)){
 				try{
-					\Lampcms\User::factory($this->Registry)->by_id($uid)->setReputation((0 - \Lampcms\Points::BEST_ANSWER))->save();
+					\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint((0 - \Lampcms\Points::BEST_ANSWER))->save();
 
 				} catch(\MongoException $e ){
-					e('unable to update reputation for old answerer '.$e->getMessage());
+					e('unable to update profit point for old answerer '.$e->getMessage());
 				}
 			}
 		}
@@ -382,7 +382,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Increase reputation of user
+	 * Increase profit point of user
 	 * who answered this question
 	 *
 	 * But NOT if answered own question
@@ -401,9 +401,9 @@ class Accept extends WebPage
 		}
 
 		try{
-			$this->Registry->Mongo->USERS->update(array('_id' => $uid), array('$inc' => array("i_rep" => \Lampcms\Points::BEST_ANSWER)));
+			$this->Registry->Mongo->USERS->update(array('_id' => $uid), array('$inc' => array("i_pp" => \Lampcms\Points::BEST_ANSWER)));
 		} catch(\MongoException $e ){
-			e('unable to increase reputation for answerer '.$e->getMessage());
+			e('unable to increase profit point for answerer '.$e->getMessage());
 		}
 
 		return $this;
@@ -411,7 +411,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Increase the reputation of Viewer for
+	 * Increase the profit point of Viewer for
 	 * accepting an answer BUT
 	 * ONLY if this is the first type Viewer
 	 * accepted answer for this question
@@ -427,7 +427,7 @@ class Accept extends WebPage
 		 * the answer for someone else's question
 		 */
 		if($this->Question->getOwnerId() == $this->Registry->Viewer->getUid()){
-			$this->Registry->Viewer->setReputation(\Lampcms\Points::ACCEPT_ANSWER)->save();
+			$this->Registry->Viewer->setProfitPoint(\Lampcms\Points::ACCEPT_ANSWER)->save();
 		}
 
 		return $this;

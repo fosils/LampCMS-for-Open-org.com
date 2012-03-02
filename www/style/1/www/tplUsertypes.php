@@ -54,9 +54,9 @@ class tplUsertypes extends Lampcms\Template\Fast
 {
 	protected static $vars = array(
 	
-	'rep_c' => '', // 1
-	'rep' => 'Reputation', //2
-	'rep_t' => 'Users with highest reputation', //3
+	'pp_c' => '', // 1
+	'pp' => 'ProfitPoint', //2
+	'pp_t' => 'Users with highest profit point', //3
 	
 	
 	'new_c' => '', //4
@@ -76,7 +76,7 @@ class tplUsertypes extends Lampcms\Template\Fast
 
 	protected static $tpl = '
 	<div id="qtypes" class="cb fl reveal hidden">
-		<a id="rep" href="/users/rep/" class="ajax sortans qtype%1$s ttt2" title="%3$s"><span rel="in">%2$s</span></a>
+		<a id="pp" href="/users/pp/" class="ajax sortans qtype%1$s ttt2" title="%3$s"><span rel="in">%2$s</span></a>
 		<a id="new" href="/users/new/" class="ajax sortans qtype%4$s ttt2" title="%6$s"><span rel="in">%5$s</span></a>
 		<a id="old" href="/users/old/" class="ajax sortans qtype%7$s ttt2" title="%9$s"><span rel="in">%8$s</span></a>
 		<a id="seen" href="/users/active/" class="ajax sortans qtype%10$s ttt2" title="%12$s"><span rel="in">%11$s</span></a>

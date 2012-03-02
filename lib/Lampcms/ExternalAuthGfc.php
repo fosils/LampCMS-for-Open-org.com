@@ -365,7 +365,7 @@ class ExternalAuthGfc extends ExternalAuth
 		'locale' => $this->Registry->Locale->getLocale(),
 		'fcauth' => $this->fcauth,
 		'tz' => TimeZone::getTZbyoffset($tzo),
-		'i_rep' => 1,
+		'i_pp' => 1,
 		'i_fv' => (false !== $intFv = Cookie::getSidCookie(true)) ? $intFv : time());
 
 		$aUser = array_merge($this->Registry->Geo->Location->data, $aUser);

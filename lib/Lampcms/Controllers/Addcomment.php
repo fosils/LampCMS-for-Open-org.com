@@ -169,7 +169,7 @@ class Addcomment extends WebPage
 	 * Usually it's owner of resource
 	 * OR owner of question for which this resource is
 	 * an answer
-	 * OR someone with enough reputation
+	 * OR someone with enough profit point
 	 *
 	 *
 	 * @return object $this
@@ -180,18 +180,18 @@ class Addcomment extends WebPage
 
 		/**
 		 * If NOT question owner AND NOT Resource owner
-		 * AND Reputation below required 
+		 * AND Profit Point below required 
 		 * THEN must have 'comment' permission
 		 * 
 		 * This means in order to comment Viewer
 		 * must be owner of Question OR owner of Answer
-		 * OR have enough reputation
+		 * OR have enough profit point
 		 * OR have special 'comment' permission
 		 */
 		if(
 		($this->Resource->getQuestionOwnerId() !== $viewerID) &&
 		($this->Resource->getOwnerId() !== $viewerID) &&
-		($this->Registry->Viewer->getReputation() < \Lampcms\Points::COMMENT)){
+		($this->Registry->Viewer->getProfitPoint() < \Lampcms\Points::COMMENT)){
 			try{
 				$this->checkAccessPermission('comment');
 			} catch(\Exception $e){
@@ -200,16 +200,16 @@ class Addcomment extends WebPage
 				 * If this is an AuthException then it means
 				 * user does not have 'comment' permission in the ACL
 				 * which also means that user does not have
-				 * the required reputation score.
+				 * the required profit point.
 				 * We will show a nice message then.
 				 *
 				 * In case it's some other type of exception just re-throw it
 				 */
 				if($e instanceof \Lampcms\AccessException){
 					
-					throw new \Lampcms\Exception('A minimum reputation score of '.\Lampcms\Points::COMMENT.
+					throw new \Lampcms\Exception('A minimum profit point of '.\Lampcms\Points::COMMENT.
 					' is required to comment on someone else\'s question or answer. 
-					Your current reputation score is '.$this->Registry->Viewer->getReputation());
+					Your current profit point is '.$this->Registry->Viewer->getProfitPoint());
 				}else {
 					throw $e;
 				}
@@ -247,7 +247,7 @@ class Addcomment extends WebPage
 		 * in the tplComment
 		 * That ID is then used when figuring out if
 		 * viewer has permission to add comment.
-		 * Users with low reputation still always have
+		 * Users with low profit point still always have
 		 * premission to add comments to own resources.
 		 * 
 		 */

@@ -76,7 +76,7 @@ class tplOneFollower extends Lampcms\Template\Fast
 	protected static $vars = array(
 	'_id' => '', //1
 	'displayName' => '', //2
-	'i_rep' => '',  //3
+	'i_pp' => '',  //3
 	'avatar' => '', //4
 	'username' => '', //5
 	'since' => '', //6

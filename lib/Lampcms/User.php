@@ -724,27 +724,27 @@ Interfaces\LinkedinUser
 
 
 	/**
-	 * Change reputation score
+	 * Change profit point
 	 * Makes sure new score can never go lower than 1
 	 * @param int $iPoints
 	 *
 	 * @return object $this
 	 */
-	public function setReputation($iPoints){
+	public function setProfitPoint($iPoints){
 		if(!\is_numeric($iPoints)){
 			throw new DevException('value of $iPoints must be numeric, was: '.$iPoints);
 		}
 
-		$iRep = $this->offsetGet('i_rep');
-		$iNew = max(0, ($iRep + (int)$iPoints));
+		$iPp = $this->offsetGet('i_pp');
+		$iNew = max(0, ($iPp + (int)$iPoints));
 
 		/**
-		 * @todo investigate where reputation is set directly
-		 * using assignment operator $User['i_rep'] = $x
-		 * and change it to use proper setReputation method
+		 * @todo investigate where profit point is set directly
+		 * using assignment operator $User['i_pp'] = $x
+		 * and change it to use proper setProfitPoint method
 		 * then stop using parent::offsetSet()
 		 */
-		parent::offsetSet('i_rep', $iNew);
+		parent::offsetSet('i_pp', $iNew);
 
 		return $this;
 	}
@@ -752,13 +752,13 @@ Interfaces\LinkedinUser
 
 	/**
 	 *
-	 * Get reputation score of user
+	 * Get profit point of user
 	 *
-	 * @return int reputation of user, with minimum of 1
+	 * @return int profit point of user, with minimum of 1
 	 */
-	public function getReputation(){
+	public function getProfitPoint(){
 
-		return max(0, $this->offsetGet('i_rep'));
+		return max(0, $this->offsetGet('i_pp'));
 	}
 
 
@@ -1169,8 +1169,8 @@ Interfaces\LinkedinUser
 				//$this->setRoleId($newval);
 				break;
 
-			case 'i_rep':
-				throw new DevException('value of i_rep cannot be set directly. Use setReputation() method');
+			case 'i_pp':
+				throw new DevException('value of i_pp cannot be set directly. Use setProfitPoint() method');
 				break;
 
 			case 'tz':

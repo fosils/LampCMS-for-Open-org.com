@@ -428,7 +428,7 @@ abstract class WebPage extends Base
 
 		$this->aPageVars['session_uid'] = $Viewer->getUid();
 		$this->aPageVars['role'] = $Viewer->getRoleId();
-		$this->aPageVars['rep'] = $Viewer->getReputation();
+		$this->aPageVars['pp'] = $Viewer->getProfitPoint();
 		$this->aPageVars['version_id'] = Form::generateToken();
 		/**
 		 * meta 'tw' will be set to string "1" if user has conneted Twitter

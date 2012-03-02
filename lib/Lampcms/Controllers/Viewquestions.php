@@ -303,7 +303,7 @@ class Viewquestions extends WebPage
 	 * Must peek at last item in cursor and get
 	 * its' timestamp, then rewind cursor back
 	 * Use usual uid, usergroup, pageID, lang for etag
-	 * maybe also use reputation score now
+	 * maybe also use profit point now
 	 */
 	protected function sendCacheHeaders(){
 

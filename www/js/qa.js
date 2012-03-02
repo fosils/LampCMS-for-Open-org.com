@@ -1002,7 +1002,7 @@ YUI({
 	Twitter, //
 	showEditComment, //
 	setToken, //
-	getReputation, //
+	getProfitPoint, //
 	isLoggedIn, //
 	getViewerId, //
 	oCTabs = {}, //
@@ -1059,10 +1059,10 @@ YUI({
 	 */
 	eAskTA, //
 	/**
-	 * Current reputation score
+	 * Current profit point
 	 * of viewer
 	 */
-	reputation, //
+	profitpoint, //
 	/**
 	 * id of current viewer
 	 */
@@ -1719,6 +1719,7 @@ YUI({
 	/**
 	 * Handle form submit for
 	 * forms inside the alerter (FB Overlay)
+
 	 */
 	handleModalForm = function(e){
 		var request, cfg, form = e.currentTarget;
@@ -2647,6 +2648,7 @@ YUI({
 		};
 		
 		if(Y.one("#dostuff") && Y.one("#dostuff").ancestor('div')){
+
 			showLoading(Y.one("#dostuff").ancestor('div'));
 		}
 		
@@ -3321,15 +3323,15 @@ YUI({
 	 * 
 	 */
 	showCommentForm = function(el){
-		var minrep, vid, form, rep, resID;
-		rep = getReputation();
+		var minpp, vid, form, pp, resID;
+		pp = getProfitPoint();
 		vid = getViewerId();
-		minrep = getMeta('min_com_rep');
-		Y.log('rep: ' + rep + ' minrep: ' + minrep);
+		minpp = getMeta('min_com_pp');
+		Y.log('pp: ' + pp + ' minpp: ' + minpp);
 		//Y.log('rid' + el.get('id'));
 		if(ensureLogin()){
-		//if( isModerator() || (reputation > 0) || el.test('.uid-' + getViewerId())){
-		if( ('1' === getMeta('comment')) || (getMeta('asker_id') == vid) || (rep > minrep) || el.test('.uid-' + vid)){	
+		//if( isModerator() || (profitpoint > 0) || el.test('.uid-' + getViewerId())){
+		if( ('1' === getMeta('comment')) || (getMeta('asker_id') == vid) || (pp > minpp) || el.test('.uid-' + vid)){	
 			resID = el.get('id');
 		    resID = resID.substr(8);
 		    
@@ -3361,9 +3363,9 @@ YUI({
 		    }
 		
 		} else {
-			alert('You must have a reputation of at least <b>'+minrep+'</b><br>'
+			alert('You must have a profit point of at least <b>'+minpp+'</b><br>'
 					+'to be able to add comments<br>'
-					+'Your current reputation is: <b>' + rep + '</b>');
+					+'Your current profit point is: <b>' + pp + '</b>');
 			return;
 			}
 		}
@@ -3388,13 +3390,13 @@ YUI({
 	 * 
 	 */
 	showCommentReplyForm = function(el){
-		var minrep, vid, form, rep, resID, parentDiv, parentID;
-		rep = getReputation();
+		var minpp, vid, form, pp, resID, parentDiv, parentID;
+		pp = getProfitPoint();
 		vid = getViewerId();
 		Y.log('3248 vid: ' + vid);
 		Y.log('askerid: ' + getMeta('asker_id'));
-		minrep = getMeta('min_com_rep');
-		Y.log('rep: ' + rep + ' minrep: ' + minrep);
+		minpp = getMeta('min_com_pp');
+		Y.log('pp: ' + pp + ' minpp: ' + minpp);
 		parentDiv = el.ancestor("div.com_wrap");
 		Y.log('parendDiv' + parentDiv);
 		resID = parentDiv.ancestor("div.comments").get('id');
@@ -3413,9 +3415,9 @@ YUI({
 		 * if there is a meta tag "comment" with value 1 (set for moderators,
 		 * so they can always comment)
 		 * 
-		 * if viewer has enough reputation
+		 * if viewer has enough profit point
 		 */
-		if( ('1' === getMeta('comment')) || (getMeta('asker_id') == vid) || (rep > minrep) || el.test('.uid-' + vid)){	
+		if( ('1' === getMeta('comment')) || (getMeta('asker_id') == vid) || (pp > minpp) || el.test('.uid-' + vid)){	
 			parentID = el.get('id');
 			Y.log('3322 parentID: ' + parentID); //
 			parentID = parentID.substr(8);
@@ -3444,9 +3446,9 @@ YUI({
 		    }
 		
 		} else {
-			alert('You must have a reputation of at least <b>'+minrep+'</b><br>'
+			alert('You must have a profit point of at least <b>'+minpp+'</b><br>'
 					+'to be able to add comments<br>'
-					+'Your current reputation is: <b>' + rep + '</b>');
+					+'Your current profit point is: <b>' + pp + '</b>');
 			return;
 			}
 		}
@@ -3602,24 +3604,24 @@ YUI({
 
 	
 	/**
-	 * Get reputation score of current viewer
+	 * Get profit point of current viewer
 	 * 
-	 * @return int reputation score
+	 * @return int profit point
 	 */
-	getReputation = function(){
+	getProfitPoint = function(){
 		var score;
-		if(!reputation){
-			score = getMeta('rep');
-			reputation = (!score) ? 1 : parseInt(score, 10);	
+		if(!profitpoint){
+			score = getMeta('pp');
+			profitpoint = (!score) ? 1 : parseInt(score, 10);	
 		}
 		
-		return reputation;
+		return profitpoint;
 	};
 	
 	/**
 	 * Add <span> elements inside .contols
 	 * only if viewer is moderator or 
-	 * has enough reputation to use them
+	 * has enough profit point to use them
 	 */
 	addAdminControls = function(){
 		
@@ -3630,7 +3632,7 @@ YUI({
 			controls.each(function(){
 				//Y.log('this is: ' + this);
 				if(this.test('.question')){
-					if(isModerator() || this.test('.uid-' + getViewerId()) || (500 < getReputation()) ){
+					if(isModerator() || this.test('.uid-' + getViewerId()) || (500 < getProfitPoint()) ){
 							this.append(' <span class="ico retag ajax" title="Retag this item">retag</span>');
 					}
 					if(!Y.one('#closed') && (isModerator() || this.test('.uid-' + getViewerId()) ) ){
@@ -3650,7 +3652,7 @@ YUI({
 				 * meaning controls has class uid-1234
 				 * where 1234 is also id of viewer  + getViewerId()
 				 */
-				if(isModerator() || this.test('.uid-' + getViewerId())  || 2000 < getReputation()){
+				if(isModerator() || this.test('.uid-' + getViewerId())  || 2000 < getProfitPoint()){
 					
 					/**
 					 * If is moderator or Owner of item,
@@ -4011,6 +4013,7 @@ YUI({
 		if(TTT && TTT.size() > 0){
 			if(ttB){
 				ttB.destroy();
+
 			}
 		ttB = new YAHOO.widget.Tooltip("ttB", { 
 			context:TTT._nodes,

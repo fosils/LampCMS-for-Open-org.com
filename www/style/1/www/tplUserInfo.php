@@ -54,8 +54,8 @@ class tplUserInfo extends Lampcms\Template\Fast
 	protected static $vars = array(
 	'username' => '', // 1
 	'avatar' => '', //2
-	'reputation' => '', // 3
-    'reputationLabel' => 'reputation', // 4
+	'profitpoint' => '', // 3
+    'profitpointLabel' => 'profit point', // 4
 	'name' => '', // 5
 	'nameLabel' => 'Name', // 6
 	'since' => '', // 7

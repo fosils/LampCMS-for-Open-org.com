@@ -89,7 +89,7 @@ class SocialCheckboxes
 		/**
 		 * @todo Translate String
 		 */
-		$tpl = 'Post to %s<br><strong>+%s</strong> reputation points';
+		$tpl = 'Post to %s<br><strong>+%s</strong> profit points';
 
 		/**
 		 * If has twitter observer module

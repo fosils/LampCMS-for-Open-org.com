@@ -174,7 +174,7 @@ class PostTweet extends \Lampcms\Event\Observer
 				 * then reward the user with points!
 				 */
 				if(!empty($result['id_str']) && ('200' == $result['http_code'])){
-					$User->setReputation($reward);
+					$User->setProfitPoint($reward);
 
 					/**
 					 * Now need to also record Tweet Status data

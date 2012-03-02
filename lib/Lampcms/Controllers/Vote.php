@@ -132,7 +132,7 @@ class Vote extends WebPage
 			->getIncrementValue()
 			->increaseVoteCount()
 			->updateQuestion()
-			->setOwnerReputation()
+			->setOwnerProfitPoint()
 			->postEvent();
 		} catch (\Exception $e){
 			d('Vote not counted due to exception: '.$e->getMessage().' in '.$e->getFile().' line: '.$e->getLine());
@@ -255,12 +255,12 @@ class Vote extends WebPage
 
 
 	/**
-	 * Increase or decrease owner's reputation
+	 * Increase or decrease owner's profit point
 	 * after his question or answer receives a vote
 	 *
 	 * @return object $this
 	 */
-	protected function setOwnerReputation(){
+	protected function setOwnerProfitPoint(){
 
 		$uid = $this->Resource->getOwnerId();
 		d('uid of resource owner: '.$uid);
@@ -269,7 +269,7 @@ class Vote extends WebPage
 		 *
 		 */
 		try{
-			\Lampcms\User::factory($this->Registry)->by_id($uid)->setReputation($this->calculatePoints());
+			\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint($this->calculatePoints());
 		} catch(\Exception $e){
 			e($e->getMessage().' in file: '.$e->getFile().' on line: '.$e->getLine());
 		}

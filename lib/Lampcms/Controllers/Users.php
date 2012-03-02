@@ -80,7 +80,7 @@ class Users extends WebPage
 	 */
 	protected $perPage = 15;
 
-	protected $pagerPath = '/users/rep';
+	protected $pagerPath = '/users/pp';
 
 
 	/**
@@ -105,18 +105,18 @@ class Users extends WebPage
 	 *
 	 * @var string
 	 */
-	protected $sort = 'rep';
+	protected $sort = 'pp';
 
 
 	/**
 	 * Condition for MongoCursor sort
 	 *
-	 * Defaults to sort by reputation in
+	 * Defaults to sort by profit point in
 	 * Descending order
 	 *
 	 * @var array
 	 */
-	protected $sortOrder = array('i_rep' => -1);
+	protected $sortOrder = array('i_pp' => -1);
 
 
 	/**
@@ -194,9 +194,9 @@ class Users extends WebPage
 		$this->perPage = $this->Registry->Ini->PER_PAGE_USERS;
 
 
-		$this->sort = $this->Registry->Request->get('sort', 's', 'rep');
-		if(!in_array($this->sort, array('rep', 'new', 'old', 'active'))){
-			throw new \InvalidArgumentException('Invalid value of "sort" param. Valid values are "new", "old" or "rep" or "active". Was: '.$this->sort);
+		$this->sort = $this->Registry->Request->get('sort', 's', 'pp');
+		if(!in_array($this->sort, array('pp', 'new', 'old', 'active'))){
+			throw new \InvalidArgumentException('Invalid value of "sort" param. Valid values are "new", "old" or "pp" or "active". Was: '.$this->sort);
 		}
 
 		switch($this->sort){
@@ -205,9 +205,9 @@ class Users extends WebPage
 				$this->pagerPath = '/users/active';
 				break;
 
-			case 'rep':
-				$this->sortOrder = array('i_rep' => -1);
-				$this->pagerPath = '/users/rep';
+			case 'pp':
+				$this->sortOrder = array('i_pp' => -1);
+				$this->pagerPath = '/users/pp';
 				break;
 
 			case 'new':
@@ -318,7 +318,7 @@ class Users extends WebPage
 		$this->Cursor = $this->Registry->Mongo->USERS->find($where,
 		array(
 			'_id', 
-			'i_rep', 
+			'i_pp', 
 			'username', 
 			'fn', 
 			'mn', 

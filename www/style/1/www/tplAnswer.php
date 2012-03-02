@@ -173,7 +173,7 @@ class tplAnswer extends Lampcms\Template\Fast
             </div>
             	<div class="usr_details usr usr_%7$s">
             	%3$s<br>
-            	<span class="reputation" title="reputation score"></span>
+            	<span class="profitpoint" title="profit point"></span>
 				</div>
 			</div>
 			%17$s

@@ -125,7 +125,7 @@ class ShowFollowers extends LampcmsObject
 		$this->Cursor = $this->Registry->Mongo->USERS->find(
 		$where, array(
 			'_id', 
-			'i_rep', 
+			'i_pp', 
 			'username', 
 			'fn', 
 			'mn', 
@@ -185,7 +185,7 @@ class ShowFollowers extends LampcmsObject
 		$this->Cursor = $this->Registry->Mongo->USERS->find(
 		$where, array(
 			'_id', 
-			'i_rep', 
+			'i_pp', 
 			'username', 
 			'fn', 
 			'mn', 
@@ -247,7 +247,7 @@ class ShowFollowers extends LampcmsObject
 		$this->Cursor = $this->Registry->Mongo->USERS->find(
 		$where, array(
 			'_id', 
-			'i_rep', 
+			'i_pp', 
 			'username', 
 			'fn', 
 			'mn', 
@@ -324,7 +324,7 @@ class ShowFollowers extends LampcmsObject
 		$this->Cursor = $this->Registry->Mongo->USERS->find(
 		$where, array(
 			'_id', 
-			'i_rep', 
+			'i_pp', 
 			'username', 
 			'fn', 
 			'mn', 

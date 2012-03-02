@@ -210,31 +210,31 @@ class UserTest extends LampcmsUnitTestCase
 	}
 
 
-	public function testGetReputation(){
-		$this->assertEquals(1, $this->User->getReputation());
+	public function testGetProfitPoint(){
+		$this->assertEquals(1, $this->User->getProfitPoint());
 	}
 
 	/**
-	 * @depends testGetReputation
+	 * @depends testGetProfit Point
 	 *
 	 */
-	public function testSetReputation(){
-		$this->User->setReputation(0);
-		$this->assertEquals(1, $this->User->getReputation());
-		$this->User->setReputation(25);
-		$this->assertEquals(26, $this->User->getReputation());
+	public function testSetProfitPoint(){
+		$this->User->setProfitPoint(0);
+		$this->assertEquals(1, $this->User->getProfitPoint());
+		$this->User->setProfitPoint(25);
+		$this->assertEquals(26, $this->User->getProfitPoint());
 		$this->User->setSaved();
 	}
 
 
-	public function testAssignReputation(){
+	public function testAssignProfitPoint(){
 		try{
-			$this->User['i_rep'] = 10;
+			$this->User['i_pp'] = 10;
 		} catch (\Lampcms\DevException $e){
 			return;
 		}
 
-		$this->fail('\Lampcms\DevException is expected when assigning value of i_rep');
+		$this->fail('\Lampcms\DevException is expected when assigning value of i_pp');
 	}
 
 

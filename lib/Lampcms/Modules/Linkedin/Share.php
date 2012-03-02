@@ -173,7 +173,7 @@ class Share extends \Lampcms\Event\Observer
 				return;
 			}
 
-			$User->setReputation($reward);
+			$User->setProfitPoint($reward);
 		};
 
 		\Lampcms\runLater($func);
