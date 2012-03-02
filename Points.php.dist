@@ -53,7 +53,7 @@
 namespace Lampcms;
 
 /**
- * Constants of reputation points per action performed
+ * Constants of profit points per action performed
  * as well as points required to perform certain actions
  *
  *
@@ -128,7 +128,7 @@ class Points
 
 
 	/**
-	 * REPUTATION ACL LEVELS BELOW!
+	 * PROFIT POINT ACL LEVELS BELOW!
 	 */
 
 	/**
