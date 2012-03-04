@@ -95,7 +95,7 @@ class tplU3 extends Lampcms\Template\Fast
 	'registered_l' => 'Registered', //7
 	'last_seen_l' => 'Last seen', //8
 	'last_seen' => '', //9
-	'profitpoint_l' => 'Current User Profit point', //10
+	'profitpoint_l' => 'Current amount of User Profit point', //10
 	'deleted' => '' //11
 	);
 

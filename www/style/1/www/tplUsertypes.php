@@ -56,7 +56,7 @@ class tplUsertypes extends Lampcms\Template\Fast
 	
 	'pp_c' => '', // 1
 	'pp' => 'ProfitPoint', //2
-	'pp_t' => 'Users with highest profit point', //3
+	'pp_t' => 'Users with highest amount of profit point', //3
 	
 	
 	'new_c' => '', //4

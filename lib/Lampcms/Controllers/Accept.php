@@ -309,7 +309,7 @@ class Accept extends WebPage
 			/**
 			 * Need to set 'accepted' to null
 			 * in old answer because it is not longer an accepted one
-			 * and also decrease profit point for user who
+			 * and also decrease the amounts of profit points for user who
 			 * owned formerly accepted answer
 			 */
 			$this->getOldAnswer()
@@ -355,7 +355,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Decrease profit point of user who
+	 * Decrease the profit point amount of user who
 	 * owns the old answer
 	 *
 	 * @todo check current score and make sure
@@ -372,7 +372,7 @@ class Accept extends WebPage
 					\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint((0 - \Lampcms\Points::BEST_ANSWER))->save();
 
 				} catch(\MongoException $e ){
-					e('unable to update profit point for old answerer '.$e->getMessage());
+					e('unable to update the profit point amount for old answerer '.$e->getMessage());
 				}
 			}
 		}
@@ -382,7 +382,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Increase profit point of user
+	 * Increase the profit point amount of user
 	 * who answered this question
 	 *
 	 * But NOT if answered own question
@@ -403,7 +403,7 @@ class Accept extends WebPage
 		try{
 			$this->Registry->Mongo->USERS->update(array('_id' => $uid), array('$inc' => array("i_pp" => \Lampcms\Points::BEST_ANSWER)));
 		} catch(\MongoException $e ){
-			e('unable to increase profit point for answerer '.$e->getMessage());
+			e('unable to increase the profit point amount for answerer '.$e->getMessage());
 		}
 
 		return $this;
@@ -411,7 +411,7 @@ class Accept extends WebPage
 
 
 	/**
-	 * Increase the profit point of Viewer for
+	 * Increase the profit point amount of Viewer for
 	 * accepting an answer BUT
 	 * ONLY if this is the first type Viewer
 	 * accepted answer for this question

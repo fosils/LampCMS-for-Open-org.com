@@ -198,7 +198,7 @@ class Retag extends WebPage
 	 * Check to make sure Viewer has permission
 	 * to retag.
 	 * Permitted to retag are: owner of question,
-	 * moderator/admin or user with profit point
+	 * moderator/admin or user with enough amounts of profit points
 	 *
 	 * @return object $this
 	 *

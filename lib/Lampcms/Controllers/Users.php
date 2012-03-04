@@ -111,7 +111,7 @@ class Users extends WebPage
 	/**
 	 * Condition for MongoCursor sort
 	 *
-	 * Defaults to sort by profit point in
+	 * Defaults to sort by profit point amount in
 	 * Descending order
 	 *
 	 * @var array

@@ -724,8 +724,8 @@ Interfaces\LinkedinUser
 
 
 	/**
-	 * Change profit point
-	 * Makes sure new score can never go lower than 1
+	 * Change the amount of profit point
+	 * Makes sure new score can never go lower than 0
 	 * @param int $iPoints
 	 *
 	 * @return object $this
@@ -752,9 +752,9 @@ Interfaces\LinkedinUser
 
 	/**
 	 *
-	 * Get profit point of user
+	 * Get profit point amount of user
 	 *
-	 * @return int profit point of user, with minimum of 1
+	 * @return int profit point amount of user, with minimum of 0
 	 */
 	public function getProfitPoint(){
 

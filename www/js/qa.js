@@ -1059,8 +1059,7 @@ YUI({
 	 */
 	eAskTA, //
 	/**
-	 * Current profit point
-	 * of viewer
+	 * Current profit point amount of viewer
 	 */
 	profitpoint, //
 	/**
@@ -1719,6 +1718,7 @@ YUI({
 	/**
 	 * Handle form submit for
 	 * forms inside the alerter (FB Overlay)
+
 
 	 */
 	handleModalForm = function(e){
@@ -3363,9 +3363,9 @@ YUI({
 		    }
 		
 		} else {
-			alert('You must have a profit point of at least <b>'+minpp+'</b><br>'
+			alert('You must have a profit point amount of at least <b>'+minpp+'</b><br>'
 					+'to be able to add comments<br>'
-					+'Your current profit point is: <b>' + pp + '</b>');
+					+'Your current profit point amount is: <b>' + pp + '</b>');
 			return;
 			}
 		}
@@ -3415,7 +3415,7 @@ YUI({
 		 * if there is a meta tag "comment" with value 1 (set for moderators,
 		 * so they can always comment)
 		 * 
-		 * if viewer has enough profit point
+		 * if viewer has enough profit point amount
 		 */
 		if( ('1' === getMeta('comment')) || (getMeta('asker_id') == vid) || (pp > minpp) || el.test('.uid-' + vid)){	
 			parentID = el.get('id');
@@ -3446,9 +3446,9 @@ YUI({
 		    }
 		
 		} else {
-			alert('You must have a profit point of at least <b>'+minpp+'</b><br>'
+			alert('You must have a profit point amount of at least <b>'+minpp+'</b><br>'
 					+'to be able to add comments<br>'
-					+'Your current profit point is: <b>' + pp + '</b>');
+					+'Your current profit point amount is: <b>' + pp + '</b>');
 			return;
 			}
 		}
@@ -3604,9 +3604,9 @@ YUI({
 
 	
 	/**
-	 * Get profit point of current viewer
+	 * Get profit point amount of current viewer
 	 * 
-	 * @return int profit point
+	 * @return int profit point amount
 	 */
 	getProfitPoint = function(){
 		var score;
@@ -3621,7 +3621,7 @@ YUI({
 	/**
 	 * Add <span> elements inside .contols
 	 * only if viewer is moderator or 
-	 * has enough profit point to use them
+	 * has enough amount of profit point to use them
 	 */
 	addAdminControls = function(){
 		

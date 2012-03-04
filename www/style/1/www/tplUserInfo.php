@@ -55,7 +55,7 @@ class tplUserInfo extends Lampcms\Template\Fast
 	'username' => '', // 1
 	'avatar' => '', //2
 	'profitpoint' => '', // 3
-    'profitpointLabel' => 'profit point', // 4
+    'profitpointLabel' => 'Profit point amount', // 4
 	'name' => '', // 5
 	'nameLabel' => 'Name', // 6
 	'since' => '', // 7

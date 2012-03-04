@@ -255,7 +255,7 @@ class Vote extends WebPage
 
 
 	/**
-	 * Increase or decrease owner's profit point
+	 * Increase or decrease owner's profit point amount
 	 * after his question or answer receives a vote
 	 *
 	 * @return object $this

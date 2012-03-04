@@ -246,7 +246,7 @@ You can change your password after you log in.
 		$aData['lang'] 			= $this->Registry->getCurrentLang();
 		$aData['locale'] 		= $this->Registry->Locale->getLocale();
 		/**
-		 * Initial profit point is always 1
+		 * Initial amount of profit point is always 1
 		 * @var int
 		 */
 		$aData['i_pp'] = 0;

@@ -64,7 +64,7 @@ class FloodCheck extends \Lampcms\Event\Observer
 {
 	/**
 	 * @todo later we should check the time
-	 * offset based on user profit point
+	 * offset based on user's profit point amount
 	 *
 	 */
 	protected $minutesToWait = 1;

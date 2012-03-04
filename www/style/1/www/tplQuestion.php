@@ -197,7 +197,7 @@ class tplQuestion extends Lampcms\Template\Fast
             </div>
             	<div class="usr_details">
             	%3$s<br>
-            	<span class="profitpoint" title="profit point"></span>
+            	<span class="profitpoint" title="profit point amount"></span>
 				</div>
 				  <br>
 			&nbsp;<img src="/images/blank.gif" class="flag flag-%24$s" alt="%24$s" title="%25$s">
