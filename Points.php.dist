@@ -124,7 +124,7 @@ class Points
 	 * Enter description here ...
 	 * @var unknown_type
 	 */
-	const SHARED_CONTENT = 5;
+	const SHARED_CONTENT = 0;
 
 
 	/**

@@ -87,9 +87,16 @@ class SocialCheckboxes
 		$aFilters = $Registry->Ini->getSection('INPUT_FILTERS');
 		//d('$aFilters: '.print_r($aFilters, 1));
 		/**
+		 * Adjust $tpl to show amount of profit points when awarded
+		 * amount is greater than 0
 		 * @todo Translate String
 		 */
-		$tpl = 'Post to %s<br><strong>+%s</strong> profit points';
+		if( \Lampcms\Points::SHARED_CONTENT > 0 ){
+			$tpl = 'Post to %s<br><strong>+%s</strong> profit points';
+		}
+		else{
+			$tpl = 'Post to %s';
+		}
 
 		/**
 		 * If has twitter observer module
