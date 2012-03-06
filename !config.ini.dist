@@ -181,6 +181,10 @@ LOG_FILE_PATH = php.log
 ;/usr/local/apache/sites/lampcms.com/logs/cgiphp.log
 LOG_FILE_PATH_CGI = cgiphp.log
 ;
+; set VOTE_FILE_PATH to csv file path for recording the votes in a csv file
+;required only if the VoteToCSV Input Filter is enabled
+;VOTE_TO_CSV_FILE_PATH = votefile.csv
+;
 ; base url of your main website. Required value!
 SITE_URL="http://localhost"
 ; system path to root directory (the one that contains this file)
@@ -412,6 +416,11 @@ online = "\\Lampcms\\Modules\\Observers\\Online"
 ipFilter= "\\Lampcms\\Modules\\Observers\\IpFilter"
 floodCheck = "\\Lampcms\\Modules\\Observers\\FloodCheck"
 questionSimilar = "\\Lampcms\\Modules\\Observers\\Similars"
+
+;Save votes to csv file.
+;When enabled, require VOTE_TO_CSV_FILE_PATH in [CONSTANTS] 
+;
+;voteToCsv = "\\Lampcms\\Modules\\Observers\\VoteToCSV"
 
 ; If twitter filter is enabled (not commented out here)
 ; then a checkbox to "Post to Twitter" will be
