@@ -76,6 +76,6 @@ class tplQtags extends Lampcms\Template\Fast
 	
 	protected static $vars = array(0 => '');
 
-	protected static $tpl = '<a href="/tagged/%2$s/" title="Topicss tagged \'%1$s\'">%1$s</a> ';
+	protected static $tpl = '<a href="/tagged/%2$s/" title="Topics tagged \'%1$s\'">%1$s</a> ';
 
 }
