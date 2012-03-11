@@ -490,9 +490,9 @@ class Delete extends WebPage
 		 * @todo translate string
 		 */
 		$message = 'Item deleted';
-		$requested = 'You cannot delete question that already has answers.<br>A request to delete
-		this question has been sent to moderators<br>
-		It will be up to moderators to either delete or edit or close the question';
+		$requested = 'You cannot delete this topic.<br>A request to delete
+		this topic has been sent to moderators<br>
+		It will be up to moderators to either delete or edit or close the topic';
 
 		if(Request::isAjax()){
 			$res = (!$this->requested) ? $message : $requested;

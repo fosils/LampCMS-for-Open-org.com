@@ -65,10 +65,10 @@ class tplSortuans extends Lampcms\Template\Fast
 	'recent_c' => '', //2
 	'voted_c' => '', //3
 	'updated_c' => '', //4
-	'oldest_t' => 'Older answers first', // 5
-	'recent_t' => 'Recent answers first', // 6
-	'voted_t' => 'Most voted answers first', // 7
-	'updated_t' => 'Answers with recent activity first', // 8
+	'oldest_t' => 'Older posts first', // 5
+	'recent_t' => 'Recent posts first', // 6
+	'voted_t' => 'Most voted posts first', // 7
+	'updated_t' => 'Posts with recent activity first', // 8
 	'oldest' => 'Oldest', //9
 	'recent' => 'Recent', //10
 	'voted' => 'Most voted', //11

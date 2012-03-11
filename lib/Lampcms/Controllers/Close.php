@@ -226,10 +226,10 @@ class Close extends WebPage
 		/**
 		 * @todo translate string
 		 */
-		$message = 'Question closed';
+		$message = 'Topic closed';
 		$requested = 'A request to close
-		this question has been sent to moderators<br>
-		The final decision about closing the question or leaving it open will be up to moderators';
+		this topic has been sent to moderators<br>
+		The final decision about closing the topic or leaving it open will be up to moderators';
 
 
 		if(Request::isAjax()){

@@ -54,7 +54,7 @@ class tplTagsort extends Lampcms\Template\Fast
 	'name' => 'Name', //6
 	'name_t' => 'Sort by name', //7
 	'recent' => 'Latest', //8
-	'recent_t' => 'Tags with most recent questions' //9
+	'recent_t' => 'Tags with most recent topicss' //9
 	);
 
 	protected static $tpl = '

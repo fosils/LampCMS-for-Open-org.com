@@ -146,7 +146,7 @@ class Retag extends WebPage
 			/*
 			 * @todo translate string
 			 */
-			throw new \Lampcms\Exception('No valid tags have been submitted. Please use words that best categorize this question');
+			throw new \Lampcms\Exception('No valid tags have been submitted. Please use words that best categorize this topic');
 		}
 
 		$count = count($this->aSubmitted);
@@ -155,14 +155,14 @@ class Retag extends WebPage
 			/**
 			 * @todo Translate string
 			 */
-			throw new \Lampcms\Exception('Question must have at least '.$min.' tag(s)');
+			throw new \Lampcms\Exception('Topic must have at least '.$min.' tag(s)');
 		}
 
 		if($count > $max){
 			/**
 			 * @todo translate string
 			 */
-			throw new \Lampcms\Exception('Question cannot have more than '.$max.' tags. Please remove some tags');
+			throw new \Lampcms\Exception('Topic cannot have more than '.$max.' tags. Please remove some tags');
 		}
 
 		return $this;
@@ -315,7 +315,7 @@ class Retag extends WebPage
 		/**
 		 * @todo translate string
 		 */
-		$message = 'Question retagged successfully';
+		$message = 'Topic retagged successfully';
 
 		if(Request::isAjax()){
 			$ret = array('reload' => 100); //'alert' => $message,

@@ -58,7 +58,7 @@ class tplUserQuestions extends Lampcms\Template\Simple
 
 	protected static $vars = array(
 	'{count}' => '',
-	'{label}' => 'Question',
+	'{label}' => 'Topic',
 	'{questions}' => '',
 	'{s}' => '',
 	'{pagination}' => '');

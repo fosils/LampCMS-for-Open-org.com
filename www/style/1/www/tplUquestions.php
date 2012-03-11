@@ -87,7 +87,7 @@ class tplUquestions extends \Lampcms\Template\Fast
 	       <div class="sqr1 %10$s">
 	       <span class="middle">
 	       		%3$s
-	       		<br>answer%17$s
+	       		<br>post%17$s
 	       		</span>
 	       </div>
 	       <div class="sqr1 vws2">

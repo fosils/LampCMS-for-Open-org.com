@@ -55,7 +55,7 @@ class tplSearchInfo extends Lampcms\Template\Fast
 	protected static $vars = array(
 	'count' => '',
 	'term' => '',
-	'label' => 'questions matching'
+	'label' => 'topics matching'
 	);
 
 

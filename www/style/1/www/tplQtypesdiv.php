@@ -55,11 +55,11 @@ class tplQtypesdiv extends \Lampcms\Template\Fast
 	'voted_c' => '', //2
 	'active_c' => '', //3
 	'newest' => 'Newest', //4
-	'newest_t' => 'Most recent questions', //5
+	'newest_t' => 'Most recent topics', //5
 	'voted' => 'Most Voted', //6
-	'voted_t' => 'Questions with most votes', //7
+	'voted_t' => 'Topics with most votes', //7
 	'active' => 'Most Active', //8
-	'active_t' => 'Questions with most activity' //9
+	'active_t' => 'Topics with most activity' //9
 	);
 
 	protected static $tpl = '

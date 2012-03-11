@@ -145,7 +145,10 @@ class Urhere extends LampcmsObject
 	 */
 	protected function translate($template, array &$vars){
 		$Translator = $this->Registry->Tr;
-		switch($template){
+		foreach( $vars as $key => $value ){
+			$vars[$key] = $Translator[$value];
+		}
+/*		switch($template){
 			case 'tplToptabs':
 				$vars['questions']    = $Translator['Questions'];
 				$vars['unanswered']   = $Translator['Unanswered'];
@@ -171,6 +174,6 @@ class Urhere extends LampcmsObject
 				$vars['noanswer_t']	= $Translator['Questions with no answers'];
 				break;
 			
-		}
+		}*/
 	}
 }

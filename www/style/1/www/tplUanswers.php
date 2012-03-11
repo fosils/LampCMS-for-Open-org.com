@@ -50,7 +50,7 @@ class tplUanswers extends \Lampcms\Template\Fast
 	'i_votes' => '0',//7
 	'v_s' => '',//8
 	'ans_s' => '',//9
-	'answered' => 'answered' // 10
+	'answered' => 'posted' // 10
 	);
 	
 	protected static$tpl = '

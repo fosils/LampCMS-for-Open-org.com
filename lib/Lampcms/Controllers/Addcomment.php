@@ -208,7 +208,7 @@ class Addcomment extends WebPage
 				if($e instanceof \Lampcms\AccessException){
 					
 					throw new \Lampcms\Exception('A minimum profit point of '.\Lampcms\Points::COMMENT.
-					' is required to comment on someone else\'s question or answer. 
+					' is required to comment on someone else\'s post. 
 					Your current profit point is '.$this->Registry->Viewer->getProfitPoint());
 				}else {
 					throw $e;

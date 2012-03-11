@@ -155,7 +155,7 @@ class tplQuestion extends Lampcms\Template\Fast
 		<br>
 			<!--
 			<a id="favorite-%1$s"
-			title="mark/unmark this question as favorite (click again to cancel)"
+			title="mark/unmark this topic as favorite (click again to cancel)"
 			class="ajax ttt favorite-mark" href="/mark_favorite/%1$s" rel="nofollow">favorite</a>
 
 			<div id="fvrt-count">%9$s</div>
@@ -177,7 +177,7 @@ class tplQuestion extends Lampcms\Template\Fast
 		<div class="question-body" id="qbody-%1$s">%2$s</div>
 		<div class="fl cb tgs">%5$s</div>
 		<div class="question%19$s controls%16$s uid-%10$s cb" id="res_%1$s">
-		     <span class="icoc stub fr">&nbsp;</span><span class="ico ttt flag ajax" title="Flag this question as inappropriate"> </span>
+		     <span class="icoc stub fr">&nbsp;</span><span class="ico ttt flag ajax" title="Flag this topic as inappropriate"> </span>
 		</div>
 		<!-- // -->
 		<table class="foot">

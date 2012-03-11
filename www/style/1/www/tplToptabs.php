@@ -48,13 +48,14 @@ class tplToptabs extends Lampcms\Template\Fast
 		'unanswered_c' => '',
 		'tags_c' => '',
 		'ask_c' => '',
-		'questions' => 'Questions',
-		'unanswered' => 'Unanswered',
+		'questions' => 'Topics',
+		'unanswered' => 'No responses',
 		'tags' => 'Tags',
-		'ask' => 'Ask Question',
+		'ask' => 'Start new topic',
 		'search' => '', //9
 		'users_c' => '', //10
-		'users' => 'Members' //11
+		'users' => 'Members', //11
+		'search_label' => 'Search',
 	);
 
 	

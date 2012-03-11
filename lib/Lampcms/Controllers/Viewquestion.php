@@ -289,7 +289,7 @@ class Viewquestion extends WebPage
 		 * @todo Translate string
 		 */
 		if(empty($this->aQuestion)){
-			throw new \Lampcms\Lampcms404Exception('Question not found');
+			throw new \Lampcms\Lampcms404Exception('Topic not found');
 		}
 		d('$this->aQuestion: '.print_r($this->aQuestion, 1));
 
@@ -317,7 +317,7 @@ class Viewquestion extends WebPage
 		 */
 		if($deleted){
 			if(!$isModerator && !\Lampcms\isOwner($this->Registry->Viewer, $this->Question)){
-				throw new \Lampcms\Lampcms404Exception('Question was deleted on '.date('F j Y', $this->aQuestion['i_del_ts']));
+				throw new \Lampcms\Lampcms404Exception('Topic was deleted on '.date('F j Y', $this->aQuestion['i_del_ts']));
 			}
 
 			/**
@@ -532,7 +532,7 @@ class Viewquestion extends WebPage
 	protected function setSimilar(){
 
 		if(!empty($this->aQuestion['sim_q'])){
-			$sim = \tplBoxrecent::parse(array($this->_('Similar questions'), 'recent-tags', $this->aQuestion['sim_q']), false);
+			$sim = \tplBoxrecent::parse(array($this->_('Similar topics'), 'recent-tags', $this->aQuestion['sim_q']), false);
 			$this->aPageVars['tags'] = $sim;
 		}
 
@@ -582,7 +582,7 @@ class Viewquestion extends WebPage
 	protected function setFooter(){
 
 		if($this->Question['i_ans'] > 0){
-			$text = 'Explore other questions tagged %1$s or <a href="/ask/">ask your own question</a>';
+			$text = 'Explore other topics tagged %1$s or <a href="/ask/">create a topic</a>';
 		} else {
 			$text = '';
 		}
@@ -622,7 +622,7 @@ class Viewquestion extends WebPage
 
 	/**
 	 * Makes the button to "Follow" or "Following"
-	 * for this question and sets this html as value
+	 * for this topic and sets this html as value
 	 * of $this->aPageVars['side']
 	 *
 	 * @return object $this
@@ -634,10 +634,10 @@ class Viewquestion extends WebPage
 		$aVars = array(
 		'id' => $qid,
 		'icon' => 'cplus',
-		'label' => $this->_('Follow this question'),
+		'label' => $this->_('Follow this topic'),
 		'class' => 'follow',
 		'type' => 'q',
-		'title' => $this->_('Follow this question to be notified of new answers, comments and edits')
+		'title' => $this->_('Follow this topic to be notified of new posts, comments and edits')
 		);
 
 
@@ -645,7 +645,7 @@ class Viewquestion extends WebPage
 			$aVars['label'] = $this->_('Following');
 			$aVars['class'] = 'following';
 			$aVars['icon'] = 'check';
-			$aVars['title'] = $this->_('You are following this question');
+			$aVars['title'] = $this->_('You are following this topic');
 		}
 
 		$this->aPageVars['side'] = '<div class="fr cb w90 lg rounded3 pl10 mb10"><div class="follow_wrap">'.\tplFollowButton::parse($aVars, false).'</div></div>';

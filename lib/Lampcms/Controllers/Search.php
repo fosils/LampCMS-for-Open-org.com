@@ -97,7 +97,7 @@ class Search extends WebPage
 		$this->term = $this->Registry->Request->getUTF8('q')->stripTags();
 		$this->aPageVars['qheader'] = '<h1>Search results for: '.$this->term.'</h1>';
 
-		$this->aPageVars['title'] = 'Questions matching &#39;'.$this->term.'&#39;';
+		$this->aPageVars['title'] = 'Topics matching &#39;'.$this->term.'&#39;';
 		d('$this->term: '.$this->term);
 
 		$this->Search = SearchFactory::get($this->Registry);

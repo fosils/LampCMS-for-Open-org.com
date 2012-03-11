@@ -200,7 +200,7 @@ class Viewqtags extends Viewquestions
 		 */
 		$text = 'Unique Tags';
 
-		$description = 'A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.';
+		$description = 'A tag is a keyword or label that categorizes your topic with other, similar topics. Using the right tags makes it easier for others to find and post to your topic.';
 
 		$this->aPageVars['topRight'] = \tplCounterblock::parse(array($this->count, $text, $description), false);
 

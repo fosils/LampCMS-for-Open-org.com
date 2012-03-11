@@ -141,12 +141,12 @@ class tplAnswer extends Lampcms\Template\Fast
 		<td class="td_votes" width="60px">
 		<div class="votebtns cb" id="vote%1$s">
 		<a id="upvote-%1$s"
-			title="I like this answer (click again to cancel)"
+			title="I like this post (click again to cancel)"
 			class="ttt ajax vote thumbup" href="/ansvote/%1$s/up" rel="nofollow">%10$s</a>
 		<div id="score%1$s" class="qscore">%6$s</div>
 
 		<a id="downvote-%1$s"
-			title="I dont like this answer (click again to cancel)"
+			title="I dont like this post (click again to cancel)"
 			class="ttt ajax vote thumbdown down" href="/ansvote/%1$s/down" rel="nofollow">%11$s</a>
 		</div>
 		<div class="acceptit anstype">%13$s</div>
@@ -157,7 +157,7 @@ class tplAnswer extends Lampcms\Template\Fast
 		<div class="ans_body" id="ansbody-%1$s">%2$s</div>
 
 		<div class="answer controls uid-%7$s" id="res_%1$s">
-		   	<span class="ico flag ttt ajax" title="Flag this answer as inappropriate">flag</span>%19$s
+		   	<span class="ico flag ttt ajax" title="Flag this post as inappropriate">flag</span>%19$s
 		</div>
 		<!-- // -->
 		<table class="foot">

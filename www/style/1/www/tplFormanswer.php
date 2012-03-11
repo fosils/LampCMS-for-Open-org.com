@@ -50,13 +50,13 @@ class tplFormanswer extends Lampcms\Template\Fast
 	'required' => 'required', //2
 	'qbody' => '', //3
 	'qbody_e' => '', //4
-	'submit' => 'Submit answer', //5
+	'submit' => 'Submit post', //5
 	'com_hand' => '', // 6
 	'readonly' => '', // 7
 	'disabled' => '', // 8
 	'connectBlock' => '', // 9
  	'formError' => '', // 10
-	'title' => 'Your answer', //11
+	'title' => 'Your post', //11
 	'qid' => '', //12
 	'socials' => '', //13
 	'preview' => 'Preview' //14

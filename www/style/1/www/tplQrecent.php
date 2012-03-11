@@ -79,8 +79,8 @@ class tplQrecent extends Lampcms\Template\Fast
 	'i_etag' => '0', //24
 	'following_tag' => '', //25
 	'following_q' => '', //26
-	'toggle' => '' // 27
-	'category' => '' //28
+	'toggle' => '', // 27
+	'category' => '', //28
 	);
 
 	protected static $tpl = '
@@ -94,7 +94,7 @@ class tplQrecent extends Lampcms\Template\Fast
                     <div rel="in">vote%16$s</div>
                 </div>
             </div>
-            <div class="status %10$s">%3$s <span rel="in">answer%17$s</span></div>
+            <div class="status %10$s">%3$s <span rel="in">post%17$s</span></div>
         </div>
         <div class="vws" title="%4$s view%15$s">%4$s <span rel="in">view%15$s</span></div>
     	<div class="fl pad2 lpad5">

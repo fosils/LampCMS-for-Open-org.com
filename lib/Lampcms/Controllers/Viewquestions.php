@@ -186,7 +186,7 @@ class Viewquestions extends WebPage
 				 * uncache onQuestionVote, onQuestionComment
 				 */
 			case 'active':
-				$this->title = $this->_('Active Questions');
+				$this->title = $this->_('Active Topics');
 				$this->pagerPath = '/active';
 				$this->typeDiv = Urhere::factory($this->Registry)->get('tplQtypesdiv', 'active');
 				$where = array('i_ts' => array('$gt' => (time() - 604800)));
@@ -203,7 +203,7 @@ class Viewquestions extends WebPage
 			case 'voted':
 				$this->pagerPath = '/voted';
 				d('cp');
-				$this->title = $this->_('Questions with highest votes in past 7 days');
+				$this->title = $this->_('Topics with highest votes in past 7 days');
 				$this->typeDiv = Urhere::factory($this->Registry)->get('tplQtypesdiv', 'voted');
 				$where = array('i_ts' => array('$gt' => (time() - 604800)));
 				$sort = array('i_votes' => -1);
@@ -215,7 +215,7 @@ class Viewquestions extends WebPage
 				 * uncache qrecent onNewQuestion only!
 				 */
 			default:
-				$this->title = $this->_('All questions');
+				$this->title = $this->_('All Topics');
 				$this->typeDiv = Urhere::factory($this->Registry)->get('tplQtypesdiv', 'newest');
 		}
 
@@ -334,10 +334,10 @@ class Viewquestions extends WebPage
 
 		$aUserTags 		= $this->Registry->Viewer['a_f_t'];
 		$showDeleted 	= $this->Registry->Viewer->isModerator();
-		$contributed	= $this->_('You have contributed to this question');
-		$following		= $this->_('You are following this question');
+		$contributed	= $this->_('You have contributed to this topic');
+		$following		= $this->_('You are following this topic');
 		$asked			= $this->_('Asked');
-		$latestBy		= $this->_('Latest answer by');
+		$latestBy		= $this->_('Latest post by');
 		$toggle			= $this->_('Toggle Unread/Read Status');
 		
 		if($this->Registry->Ini->CATEGORIES > 0){
@@ -385,7 +385,7 @@ class Viewquestions extends WebPage
 	 *
 	 */
 	protected function makeCounterBlock(){
-		$this->aPageVars['topRight'] = \tplCounterblock::parse(array($this->Cursor->count(), $this->_('Number of Questions'), ''), false);
+		$this->aPageVars['topRight'] = \tplCounterblock::parse(array($this->Cursor->count(), $this->_('Number of Topics'), ''), false);
 
 		return $this;
 	}

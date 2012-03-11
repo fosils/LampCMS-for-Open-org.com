@@ -47,7 +47,7 @@ class tplNewquestions extends Lampcms\Template\Fast
 
 	protected static $vars = array(
 	'body' => '',
-	'title' => 'Latest Questions',
+	'title' => 'Latest Topicss',
 	'block_url' => '/questions/'
 	);
 

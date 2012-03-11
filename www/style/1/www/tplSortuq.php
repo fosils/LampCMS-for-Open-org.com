@@ -67,11 +67,11 @@ class tplSortuq extends Lampcms\Template\Fast
 	'views_c' => '', //5
 	
 	
-	'oldest_t' => 'Older questions first', // 6
-	'recent_t' => 'Recent questions first', // 7
-	'voted_t' => 'Most voted questions first', // 8
-	'updated_t' => 'Question with most recent activity first', // 9
-	'views_t' => 'Question with most views first', //10
+	'oldest_t' => 'Older topics first', // 6
+	'recent_t' => 'Recent topics first', // 7
+	'voted_t' => 'Most voted topics first', // 8
+	'updated_t' => 'Topic with most recent activity first', // 9
+	'views_t' => 'Topic with most views first', //10
 	
 	'oldest' => 'Oldest', //11
 	'recent' => 'Recent', //12

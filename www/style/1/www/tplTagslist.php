@@ -59,6 +59,6 @@ class tplTagslist extends Lampcms\Template\Fast
 	);
 
 	protected static $tpl = '<div class="tag1">
-	<a href="/tagged/%4$s/">%1$s</a><span>&times;&nbsp;%2$s</span><span title="Latest question on %3$s" class="ts" rel="time">%3$s</span>
+	<a href="/tagged/%4$s/">%1$s</a><span>&times;&nbsp;%2$s</span><span title="Latest topic on %3$s" class="ts" rel="time">%3$s</span>
 	</div>';
 }

@@ -60,12 +60,12 @@ class tplFormEmailOptions extends \Lampcms\Template\Fast
 	'e_fu_d' => 'Email me when a new post is made by a user I follow', //5
 	
 	'e_fq' => '', //6
-	'e_fq_t' => 'New activity in questions I follow', // 7
-	'e_fq_d' => 'Email me when the new answer is added to questions I follow', //8
+	'e_fq_t' => 'New activity in topics I follow', // 7
+	'e_fq_d' => 'Email me when the new post is added to topics I follow', //8
 	
 	'e_ft' => '', //9
-	'e_ft_t' => 'New question with a tag I follow', //10
-	'e_ft_d' => 'Email me when the a new question is posted and is tagged with one of the tags I follow', //11
+	'e_ft_t' => 'New topic with a tag I follow', //10
+	'e_ft_d' => 'Email me when the a new topic is posted and is tagged with one of the tags I follow', //11
 	
 	'e_ok' => '', //12
 	'e_ok_t' => 'Site updates', //13
@@ -83,8 +83,8 @@ class tplFormEmailOptions extends \Lampcms\Template\Fast
 	'e_fc_d' => 'Email me when someone replies to a comment I made', //21
 	
 	'e_fa' => '', //22
-	'e_fa_t' => 'New comment on my answer', //23
-	'e_fa_d' => 'Email me when someone comments on the answer I made' //24
+	'e_fa_t' => 'New comment on my post', //23
+	'e_fa_d' => 'Email me when someone comments on the post I made' //24
 	
 	);
 	

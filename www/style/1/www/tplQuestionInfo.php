@@ -70,7 +70,7 @@ class tplQuestionInfo extends Lampcms\Template\Fast
 	'asked_label' => 'Asked', //5
 	'views_label' => 'Views', // 6
 	'updated_label' => 'Last updated', //7
-	'ans_count_label' => 'Answers', // 8
+	'ans_count_label' => 'Posts', // 8
 	'ans_count' => '0' //9
 	);
 	

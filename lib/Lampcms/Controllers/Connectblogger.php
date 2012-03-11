@@ -388,7 +388,7 @@ class Connectblogger extends WebPage
 		$label = 'You have more than one blog on Blogger.<br>
 			 Please select one blog that will be connected to this account.<br>
 			 <br>When you select the "Post to Blogger" option, your<br>
-			 Question or Answer will be posted to this blog.';
+			 Posts will be posted to this blog.';
 
 		/**
 		 * @todo Translate string

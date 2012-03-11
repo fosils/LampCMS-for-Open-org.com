@@ -87,7 +87,7 @@ class tplCategoryDiv extends Lampcms\Template\Fast
 	'i_qcount' => '0', //6
 	'i_acount' => '0', //7
 	'subs' => '', // 8
-	'latest_label' => 'Latest Question', // 9
+	'latest_label' => 'Latest Topic', // 9
 	'img' => '', //10
 	'level' => '', //11
 	'b_catonly' => '', //12

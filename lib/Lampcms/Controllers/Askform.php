@@ -97,7 +97,7 @@ class Askform extends WebPage
 	 * @see WebPage::main()
 	 */
 	protected function main(){
-		$this->aPageVars['title'] = $this->title = $this->_('Ask a question');
+		$this->aPageVars['title'] = $this->title = $this->_('Create new topic');
 
 		$this->addMetas()
 		->configureEditor()
@@ -176,11 +176,11 @@ class Askform extends WebPage
 	 * @return object $this
 	 */
 	protected function makeMemo(){
-		$memo = '<strong>'.$this->_('Ask question relevant to this community').'</strong>
+		$memo = '<strong>'.$this->_('Ask topic relevant to this community').'</strong>
 		<ul>
 		<li>Provide enough details</li>
 		<li>Be clear and concise</li>
-		<li>Provide tags relevant to your question</li>
+		<li>Provide tags relevant to your topic</li>
 		</ul>';
 
 		$this->aPageVars['qheader'] = '<div class="memo">'.$memo.'</div>';
@@ -206,7 +206,7 @@ class Askform extends WebPage
 	protected function setMustLogin(){
 
 		if(!$this->isLoggedIn()){
-			$this->Form->qbody = $this->_('Please login to post your question');
+			$this->Form->qbody = $this->_('Please login to post your topic');
 			$this->Form->com_hand = ' com_hand';
 			$this->Form->readonly = 'readonly="readonly"';
 			$this->Form->disabled = ' disabled="disabled"';
