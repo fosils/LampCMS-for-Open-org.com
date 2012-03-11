@@ -482,6 +482,10 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	}
 
 
+	public function getCategoryId(){
+		return $this->offsetGet('i_cat');
+	}
+
 	/**
 	 * Getter for 'comments' element
 	 * @return array of comments or empty array if

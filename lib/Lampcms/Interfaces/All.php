@@ -899,6 +899,12 @@ interface Question extends Post
 	public function getAnswerCount();
 
 	/**
+	 * Get id of category
+	 * @return int
+	 */
+	public function getCategoryId();
+
+	/**
 	 * Set time, reason for when question was closed
 	 * as well as username and userid of user who closed it
 	 *
@@ -957,6 +963,8 @@ interface Question extends Post
  */
 interface Answer extends Post
 {
+
+	public function getCategoryId();
 
 	/**
 	 * Get id of user that owns the question for which

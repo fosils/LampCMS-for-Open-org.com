@@ -80,6 +80,7 @@ class tplQrecent extends Lampcms\Template\Fast
 	'following_tag' => '', //25
 	'following_q' => '', //26
 	'toggle' => '' // 27
+	'category' => '' //28
 	);
 
 	protected static $tpl = '
@@ -109,7 +110,7 @@ class tplQrecent extends Lampcms\Template\Fast
         <div class="fl cb tgs">%9$s</div>
         <div class="pstr">
             <div class="usrinfo">
-            	<div class="asked"><span rel="in">%20$s </span><span title="%13$s" class="ts" rel="time">%13$s</span></div>
+            	<div class="asked"><span rel="in">%20$s </span><span title="%13$s" class="ts" rel="time">%13$s</span>%28$s</div>
             	<div class="avtr_bg imgloader" style=\'background-image:url("%12$s");\'>&nbsp;</div>
             	<div class="username">%11$s</div>
             </div> 

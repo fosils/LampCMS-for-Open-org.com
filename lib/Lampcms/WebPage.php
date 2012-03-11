@@ -391,7 +391,7 @@ abstract class WebPage extends Base
 		$Ini = $this->Registry->Ini;
 		$this->aPageVars['site_title'] = $Ini->SITE_TITLE;
 		$this->aPageVars['site_url'] = $Ini->SITE_URL;
-		$this->aPageVars['site_description'] = $Ini->SITE_NAME;
+		$this->aPageVars['description'] = $this->aPageVars['site_description'] = $Ini->SITE_NAME;
 		$this->aPageVars['show_comments'] = $Ini->SHOW_COMMENTS;
 		$this->aPageVars['max_comments'] = $Ini->MAX_COMMENTS;
 		$this->aPageVars['comments_timeout'] = $Ini->COMMENT_EDIT_TIME;
@@ -748,8 +748,13 @@ abstract class WebPage extends Base
 	 * @return object $this
 	 */
 	protected function addExtraCss(){
-		if($this->Registry->Ini->SHOW_FLAGS){
-			$this->extraCss[] = $this->Registry->Ini->CSS_SITE.'/css/flags.css';
+		try{
+			if($this->Registry->Ini->SHOW_FLAGS){
+				$this->extraCss[] = $this->Registry->Ini->CSS_SITE.'/css/flags.css';
+			}
+		}
+		catch(\Lampcms\IniException $e){
+			e($e->getMessage());
 		}
 
 		if(!empty($this->extraCss)){

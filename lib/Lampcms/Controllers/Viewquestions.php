@@ -115,7 +115,6 @@ class Viewquestions extends WebPage
 	 */
 	protected $aFields = array(
 		'a_title' => 0,
-		'a_flwrs' => 0,
 		'sim_q' => 0,
 		'a_comments' => 0
 	);
@@ -137,11 +136,11 @@ class Viewquestions extends WebPage
 		->sendCacheHeaders();
 
 		$this->aPageVars['title'] = $this->title;
+		$this->aPageVars['description'] = $this->_('My cool site'); 
 		$this->makeTopTabs()
 		->makeQlistHeader()
 		->makeCounterBlock()
 		->makeQlistBody()
-		//->makeCounterBlock()
 		->makeFollowedTags()
 		->makeRecentTags();
 
@@ -154,8 +153,6 @@ class Viewquestions extends WebPage
 	 */
 	protected function getCursor(){
 		$this->PER_PAGE = $this->Registry->Ini->PER_PAGE_QUESTIONS;
-
-		//$aFields = array();
 
 
 		$cond = $this->Request->get('cond', 's', 'recent');
@@ -230,7 +227,7 @@ class Viewquestions extends WebPage
 
 
 		/**
-		 * @todo for effecienty explicitely specify which
+		 * For effecienty explicitely specify which
 		 * doc fields to select or at least tell
 		 * which NOT to select, for example we don't need
 		 * a_edited and a_title
@@ -332,6 +329,8 @@ class Viewquestions extends WebPage
 	protected function makeQlistBody(){
 
 		$uid = $this->Registry->Viewer->getUid();
+		$in = '';
+		$categories = null; 
 
 		$aUserTags 		= $this->Registry->Viewer['a_f_t'];
 		$showDeleted 	= $this->Registry->Viewer->isModerator();
@@ -340,8 +339,12 @@ class Viewquestions extends WebPage
 		$asked			= $this->_('Asked');
 		$latestBy		= $this->_('Latest answer by');
 		$toggle			= $this->_('Toggle Unread/Read Status');
-			
-		$func = function(&$a) use($uid, $aUserTags, $showDeleted, $following, $contributed, $asked, $latestBy, $toggle){
+		
+		if($this->Registry->Ini->CATEGORIES > 0){
+			$categories = $this->Registry->Cache->categories;
+			$in = $this->_('In');
+		} 
+		$func = function(&$a) use($uid, $aUserTags, $showDeleted, $following, $contributed, $asked, $latestBy, $toggle, $categories, $in){
 
 			if($uid == $a['i_uid'] || (!empty($a['a_uids']) && in_array($uid, $a['a_uids'])) ){
 				$a['dot'] = '<div class="fr pad2"><span class="ico person ttt" title="'.$contributed.'">&nbsp;</span></div>';

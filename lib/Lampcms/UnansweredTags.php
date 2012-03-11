@@ -101,7 +101,7 @@ class UnansweredTags extends LampcmsObject
 				
 				$this->coll->update(array("tag" => $tag), array('$inc' => array("i_count" => 1), '$set' => array('i_ts' => time(), 'hts' => date('F j, Y, g:i a T'))), array("upsert" => true));
 			} catch (\MongoException $e){
-				//e('unable to upsert UNANSWERED_TAGS: '.$e->getMessage());
+				e('unable to upsert UNANSWERED_TAGS: '.$e->getMessage());
 			}
 		}
 	}

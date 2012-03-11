@@ -12,8 +12,6 @@ namespace Lampcms\Modules\Observers;
  * This observer will listen for any new vote event
  * and write the data into the csv file.
  *
- * @author Boban Pulinchery
- *
  */
  
 class VoteToCSV extends \Lampcms\Event\Observer
@@ -64,47 +62,66 @@ class VoteToCSV extends \Lampcms\Event\Observer
 	 * Place the votes information into the csv file
 	 */
 	protected function updateCSVFile(){
-		$file = $this->Registry->Ini->getVar('VOTE_TO_CSV_FILE_PATH');
-		if(!$file){
+		try{
+			$file = $this->Registry->Ini->getVar('VOTE_TO_CSV_FILE_PATH');
+		}
+		catch(\Lampcms\IniException $e){
+            //l('Error: VoteToCSV: No VOTE_FILE_PATH Defined in !config.ini');
 			throw new \Lampcms\DevException('No VOTE_FILE_PATH Defined in !config.ini, Specify currect path to csv file when enabling VoteToCSV');
 		}
-		$fields = array(
-			'Resource Id',
-			'Resource Type',
-			'Title',
-			'Url',
-			'Owner Id',
-			'Owner',
-			'Vote',
-			'Voter Id',
-			'Voter',
-			'Profit Points',
-			'Timestamp'
-		);
-		$data = $this->getVoteData();
 		/**
 		 * create the file if it do not exists with header information
 		 */
-		if(!file_exists( $file )){
-			if (false === file_put_contents($file, implode( ",", $fields) . "\n")){
-				throw new \Lampcms\DevException('Write failed for file : '.$file.' unable to write CSV header');
+		if(!file_exists($file)){
+			$fields = array(
+				'Resource Id',
+				'Resource Type',
+				'Title',
+				'Url',
+				'Owner Id',
+				'Owner',
+				'Vote',
+				'Voter Id',
+				'Voter',
+				'Profit Points',
+				'Timestamp'
+			);
+			if ($fd = fopen( $file, 'w')){
+				fputcsv($fd, $fields);
+                fclose($fd);
 			}
-		};
+            else{
+                //l('Error : VoteToCSV : failed to create votefile, check file path `' . $file . '` and permission');
+				throw new \Lampcms\DevException('Write failed for file : '.$file.' unable to write CSV header');
+            }
+			fclose($fd);
+		}
 		/**
-		 * Using file lock
+		 * Using file lock so that even on heavy traffic,
+         * the data will be clean
 		 */
+		$data = $this->getVoteData();
 		$fd = fopen( $file, 'a');
 		if( $fd ){
+            /**
+             * wait till acquiring exclusive lock
+             */
 			if( flock($fd, LOCK_EX) ){
 				fputcsv($fd, $data);
-				flock($fd, LOCK_UN);
+				flock($fd, LOCK_UN); //unlock
 			}
 			else{
-				throw new \Lampcms\DevException('Lock failed : '.$file.' Accuring exclusive lock failed ');
+                /**
+                 * Some thing wrong happen,
+                 * the execution should not reach here
+                 */
+                 //l('Fatal Error : VoteToCSV : accuring lock failed dumping data >>> ' . print_r($data) );
+                 throw new \Lampcms\DevException('Lock failed : '.$file.' Accuring exclusive lock failed ');
 			}
 			fclose($fd);
 		}
 		else{
+            //l('Error : VoteToCSV : opening csv file `' . $file . '` failed Check Permission');
 			throw new \Lampcms\DevException('Opening file: '.$file.' for appending CSV data failed');
 		}
 	}

@@ -133,7 +133,7 @@ class QuestionParser extends LampcmsObject
 		->addToSearchIndex()
 		->addTags()
 		->addUnansweredTags()
-		->addRelatedTags()
+		->addRelatedTags()->updateCategory()
 		->addUserTags();
 
 		d('cp parsing done, returning question');
@@ -490,7 +490,10 @@ class QuestionParser extends LampcmsObject
 	 * 
 	 */
 	protected function updateCategory(){
+		$Updator = new \Lampcms\Category\Updator($this->Registry->Mongo);
+		$Updator->addQuestion($this->Question);
 		
+		return $this;
 	}
 
 }

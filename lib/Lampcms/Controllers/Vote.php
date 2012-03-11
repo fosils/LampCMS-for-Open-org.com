@@ -269,7 +269,8 @@ class Vote extends WebPage
 		 *
 		 */
 		try{
-			\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint($this->calculatePoints());
+			\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint($this->calculatePoints())
+			->save();
 		} catch(\Exception $e){
 			e($e->getMessage().' in file: '.$e->getFile().' on line: '.$e->getLine());
 		}

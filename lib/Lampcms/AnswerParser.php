@@ -155,10 +155,10 @@ class Answerparser extends LampcmsObject
 
 		$this->SubmittedAnswer = $o;
 		$this->Question = (null !== $q) ? $q : $this->getQuestion();
-
-		$this->makeAnswer()
-		->followQuestion()
-		->updateQuestion();
+		$this->makeAnswer();
+		$this->followQuestion();
+		$this->updateQuestion();		
+		$this->updateCategory();
 
 		return $this->Answer;
 	}
@@ -222,6 +222,7 @@ class Answerparser extends LampcmsObject
 		'i_up' => 0,
 		'i_down' => 0,
 		'i_votes' => 0,
+		'i_cat' => $this->Question->getCategoryId(),
 		'b' => $htmlBody,
 		'i_ts' => time(),
 		'i_lm_ts' => time(),
@@ -363,15 +364,22 @@ class Answerparser extends LampcmsObject
 
 		$User = $this->SubmittedAnswer->getUserObject();
 
-		$this->Question->updateAnswerCount()
-		->addContributor($User)
-		->setLatestAnswer($User, $this->Answer)
-		->touch()
-		->save();
+		$this->Question->updateAnswerCount();
+		$this->Question->addContributor($User);
+		$this->Question->setLatestAnswer($User, $this->Answer);
+		$this->Question->touch();
+		$this->Question->save();
 
 		return $this;
 	}
 
+	protected function updateCategory(){
+
+		$Updator = new \Lampcms\Category\Updator($this->Registry->Mongo);
+		$Updator->addAnswer($this->Answer);
+		
+		return $this;
+	}
 
 	/**
 	 * Answer author will automatically
