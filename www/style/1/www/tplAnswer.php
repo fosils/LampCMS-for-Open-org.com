@@ -167,7 +167,7 @@ class tplAnswer extends Lampcms\Template\Fast
             </td>
             <td class="td_poster">
             <div class="usr_info2">
-            <div class="qtime">answered <span title="%5$s" class="ts">%5$s</span></div>
+            <div class="qtime">posted <span title="%5$s" class="ts">%5$s</span></div>
             <div class="avtr32">
              <img src="%4$s" height="32" width="32" alt="">
             </div>
