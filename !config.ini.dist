@@ -60,7 +60,7 @@ MIN_QUESTION_TAGS = 1
 ; Maximum number of tags Question can have
 ; This will be enforced when question is submitted
 ; and when question is retagged
-MAX_QUESTION_TAGS = 5
+MAX_QUESTION_TAGS = 10
 ;
 ; Minimun length of question in chars
 MIN_QUESTION_CHARS = 10
@@ -108,8 +108,8 @@ PER_PAGE_QUESTIONS = 20
 ; on pages like home page or unanswered
 PER_PAGE_USERS = 15
 ; This will be used in some page as title as well as in some emails as 'From' name
-SITE_TITLE = "LampCms Q and A site"
-SITE_NAME ="LampCMS project"
+SITE_TITLE = "Open-org.com Forum"
+SITE_NAME ="Open-org.com project"
 ;Default language
 DEFAULT_LANG = en
 ; Default locale
@@ -183,7 +183,7 @@ LOG_FILE_PATH_CGI = cgiphp.log
 ;
 ; set VOTE_FILE_PATH to csv file path for recording the votes in a csv file
 ;required only if the VoteToCSV Input Filter is enabled
-;VOTE_TO_CSV_FILE_PATH = votefile.csv
+VOTE_TO_CSV_FILE_PATH = /var/www/html/w/votefile.csv
 ;
 ; base url of your main website. Required value!
 SITE_URL="http://localhost"
@@ -260,7 +260,7 @@ SHOW_FLAGS = true
 ; leave this blank
 ; or set to 1 to make categories optional
 ; or set to 2 to make categories required
-CATEGORIES = 2
+CATEGORIES = 
 ; SEPARATOR TO BE USED IN BREADCRUMN 
 ; OF CATEGORYIES. 
 ; LEAVE INSIDE DOUBLE QUOTES TO PRESERVE SPACES
@@ -426,7 +426,7 @@ questionSimilar = "\\Lampcms\\Modules\\Observers\\Similars"
 ;Save votes to csv file.
 ;When enabled, require VOTE_TO_CSV_FILE_PATH in [CONSTANTS] 
 ;
-;voteToCsv = "\\Lampcms\\Modules\\Observers\\VoteToCSV"
+voteToCsv = "\\Lampcms\\Modules\\Observers\\VoteToCSV"
 
 ; If twitter filter is enabled (not commented out here)
 ; then a checkbox to "Post to Twitter" will be
