@@ -145,12 +145,12 @@ class tplQuestion extends Lampcms\Template\Fast
 		<td class="td_votes" align="center" width="90px">
 		<div class="votebtns" id="vote%1$s">
 		<a id="upvote-%1$s"
-			title="I like this post (click again to cancel)"
+			title="This poster deserves 100 Profit Points (click again to cancel)"
 			class="ajax ttt vote thumbup" href="/vote/%1$s/up" rel="nofollow">%13$s</a>
 		<div id="score%1$s" class="qscore">%8$s</div>
 
 		<a id="downvote-%1$s"
-			title="I dont like this post (click again to cancel)"
+			title="This poster should pay 20 Profit Points (this costs me 1 Profit Point) (click again to cancel)"
 			class="ajax ttt vote thumbdown" href="/vote/%1$s/down" rel="nofollow">%14$s</a> 
 		<br>
 			<!--
