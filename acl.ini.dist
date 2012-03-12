@@ -49,7 +49,7 @@ add_blog_post = A
 post_by_email = A
 ask = A
 answer = A
-comment = D
+comment = A
 vote = A
 accept = A
 
