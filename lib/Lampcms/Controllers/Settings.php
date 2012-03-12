@@ -81,18 +81,30 @@ class Settings extends WebPage
 		'profile' => $this->_('Edit Profile'),
 		'profileUrl' => '/editprofile/',
 		'emailPrefs' => $this->_('Email Preferences'),
-		'clearCache' => ''
+		'clearCache' => '',
+    'viewCategory' => '',
 		);
 
 		if($this->Registry->Viewer->isAdmin()){
 			$vals['clearCache'] = $this->makeClearCache();
+      $vals['viewCategory'] = $this->makeCategoryBlock();
 		}
 		
 		$this->aPageVars['body'] = \tplSettings::parse($vals);
 
 	}
 	
-	
+	protected function makeCategoryBlock(){
+    return '<div class="tool"> 
+			<div class="icn addcateg">&nbsp;</div> 
+			<div class="tool_link"><a href="/viewcategories/">view Categories</a></div> 
+		</div> 
+		<div class="tool"> 
+			<div class="icn editcateg">&nbsp;</div> 
+			<div class="tool_link"><a href="/editcategory/">Add Category</a></div> 
+		</div>';
+  }
+  
 	protected function makeClearCache(){
 		return '<div class="tool"> 
 			<div class="icn sweep">&nbsp;</div> 

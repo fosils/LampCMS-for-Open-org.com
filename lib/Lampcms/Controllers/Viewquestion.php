@@ -392,7 +392,7 @@ class Viewquestion extends WebPage
 
 		$aVars = array(
 		$this->Question['i_ans'],
-		'Answer'.$this->Question['ans_s'],
+		'Post'.$this->Question['ans_s'],
 		$tabs
 		);
 

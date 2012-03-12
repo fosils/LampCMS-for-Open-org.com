@@ -46,8 +46,7 @@ class tplSettings extends \Lampcms\Template\Fast
 	'profileUrl' => '/editprofile/', //4
 	'emailPrefs' => 'Email stuff', // 5
 	'clearCache' => '', //6
-	'viewCategory' => 'View Category', //7
-	'editCategory' => 'Add Category', //8
+	'viewCategory' => '', //7
 	);
 
 
@@ -66,14 +65,7 @@ class tplSettings extends \Lampcms\Template\Fast
 			<div class="icn changepass">&nbsp;</div> 
 			<div class="tool_link"><a href="/changepwd/">%2$s</a></div> 
 		</div> 
-		<div class="tool"> 
-			<div class="icn addcateg">&nbsp;</div> 
-			<div class="tool_link"><a href="/viewcategories/">%7$s</a></div> 
-		</div> 
-		<div class="tool"> 
-			<div class="icn editcateg">&nbsp;</div> 
-			<div class="tool_link"><a href="/editcategory/">%8$s</a></div> 
-		</div> 
+    %7$s
 		%6$s
 	</div>';
 }

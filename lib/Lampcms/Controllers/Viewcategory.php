@@ -77,7 +77,7 @@ class Viewcategory extends Unanswered
 		$this->slug = $this->Request['slug'];
 		$this->pageID = (int)$this->Request->get('pageID', 'i', 1);
 		$this->pagerPath = '/category/'.$this->slug;
-		$this->counterTaggedText = $this->_('Questions in this category');
+		$this->counterTaggedText = $this->_('Topics in this category');
 
 		$this->getCategory()
 		->getCursor()
