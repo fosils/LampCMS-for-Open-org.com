@@ -82,7 +82,7 @@ class QuestionInfo extends LampcmsObject
 		 * @todo translate Title string
 		 */
 		$tagsBlock = \tplBoxrecent::parse(array(
-		'title' => $Tr['Question tags'],
+		'title' => $Tr['Topic tags'],
 		'id' => 'question_tags',
 		$this->getTags()), false);
 
@@ -99,9 +99,9 @@ class QuestionInfo extends LampcmsObject
 				'updated' => TimeAgo::format(new \DateTime(date('r', $Question['i_lm_ts']))).' ago',
 				'views' => $this->Question['i_views'],
 		        'ans_count' => $this->Question->getAnswerCount(),
-				'asked_label' => $Tr['Asked'],
+				'asked_label' => $Tr['Posted'],
 				'updated_label' => $Tr['Last updated'],
-				'ans_count_label'  => $Tr['Number of Answers'],
+				'ans_count_label'  => $Tr['Number of posts'],
 				'views_label'  => $Tr['Number of Views']
 		)
 		);

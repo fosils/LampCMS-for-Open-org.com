@@ -120,16 +120,16 @@ class Answerform extends Form
 		d('cp');
 
 
-		$formTitle = (0 === $Question['i_ans']) ? $this->Tr['Be the first to answer this question'] : $this->Tr['Your answer'] ;
+		$formTitle = (0 === $Question['i_ans']) ? $this->Tr['Be the first to post to this topic'] : $this->Tr['Your post'] ;
 
 		$this->setVar('title', $formTitle);
 		$this->setVar('qid', $Question['_id']);
-		$this->setVar('submit', $this->Tr['Submit answer']);
+		$this->setVar('submit', $this->Tr['Submit post']);
 		$this->setVar('preview', $this->Tr['Preview']);
 
 		if($this->Registry->Viewer->isGuest()){
 			d('cp');
-			$this->qbody = $this->_('Please login to post your answer');
+			$this->qbody = $this->_('Please login to post ');
 			$this->com_hand = ' com_hand';
 			$this->readonly = 'readonly="readonly"';
 			$this->disabled = ' disabled="disabled"';
@@ -173,11 +173,11 @@ class Answerform extends Form
 		$len = $oHtmlString->length();
 
 		if($len < $minChars){
-			$this->setError('qbody', 'Answer must contain at least '.$minChars.' letters');
+			$this->setError('qbody', 'Topic must contain at least '.$minChars.' letters');
 		}
 
 		if($wordCount < $minWords){
-			$this->setError('qbody', 'Answer must contain at least '.$minWords.' words');
+			$this->setError('qbody', 'Topic must contain at least '.$minWords.' words');
 		}
 
 		return $this;

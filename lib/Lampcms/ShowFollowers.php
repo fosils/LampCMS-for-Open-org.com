@@ -147,7 +147,7 @@ class ShowFollowers extends LampcmsObject
 		 */
 		$title = $total.' ';
 		$title .= (1 === $total) ? 'person' : 'people';
-		$title .= ' following this question';
+		$title .= ' following this topic';
 
 		d('followers title: '.$title);
 
