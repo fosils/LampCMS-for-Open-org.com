@@ -67,7 +67,7 @@ class Points
 	 * Someone voted for your question
 	 * @var int
 	 */
-	const UPVOTE_Q = 5;
+	const UPVOTE_Q = 100;
 
 
 	/**
@@ -75,7 +75,7 @@ class Points
 	 * Someone voted for your answer
 	 * @var int
 	 */
-	const UPVOTE_A = 10;
+	const UPVOTE_A = 100;
 
 
 	/**
@@ -83,7 +83,7 @@ class Points
 	 * Someone accepted your answer as best answer
 	 * @var int
 	 */
-	const BEST_ANSWER = 15;
+	const BEST_ANSWER = 0;
 
 
 	/**
@@ -91,7 +91,7 @@ class Points
 	 * You accepted someones answer to your question
 	 * @var int
 	 */
-	const ACCEPT_ANSWER = 2;
+	const ACCEPT_ANSWER = 0;
 
 
 	/**
@@ -107,14 +107,14 @@ class Points
 	 * Someone voted down your answer or question
 	 * @var int
 	 */
-	const DOWNVOTE = -2;
+	const DOWNVOTE = -20;
 
 
 	/**
 	 * Your Q or A received marked as offensive 5 times
 	 * @var int
 	 */
-	const OFFENSIVE = -100;
+	const OFFENSIVE = 0;
 
 
 	/**
@@ -144,14 +144,14 @@ class Points
 	 *
 	 * @var int
 	 */
-	const VOTE_UP = 15;
+	const VOTE_UP = 5000;
 
 	/**
 	 * Need this many points to downvote
 	 *
 	 * @var int
 	 */
-	const VOTE_DOWN = 125;
+	const VOTE_DOWN = 5000;
 	/**
 	 * Need this many point to edit
 	 * Other user's content
@@ -166,6 +166,6 @@ class Points
 	 *
 	 * @var int
 	 */
-	const COMMENT = 25;
+	const COMMENT = 0;
 
 }
