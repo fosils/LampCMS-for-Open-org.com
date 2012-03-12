@@ -132,7 +132,7 @@ class Unanswered extends Viewquestions
 			 * uncache onQuestionVote, onQuestionComment
 			 */
 			case 'noanswer':
-				$this->title = $this->_('Questions with no answers');
+				$this->title = $this->_('Topics without response');
 				$this->pagerPath = '/unanswered/noanswers';
 				$where = array('i_ans' => 0);
 				$this->typeDiv = Urhere::factory($this->Registry)->get('tplQuntypes', 'noanswer');

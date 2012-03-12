@@ -154,7 +154,7 @@ class Askform extends Form
 		$this->setVar('Preview', $this->Tr['Preview']);
 		$this->setVar('title_d', $this->Tr['Enter a descriptive title']);
 		$this->setVar('title_l', $this->Tr['Title']);
-		$this->setVar('submit',  $this->Tr['Ask Question']);
+		$this->setVar('submit',  $this->Tr['Start new topic']);
 		$this->setVar('category_menu', $selectMenu);
 		if(0 === strlen($categs)){
 			$this->setVar('category_class', 'hide');
