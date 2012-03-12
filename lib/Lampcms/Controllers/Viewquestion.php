@@ -152,6 +152,15 @@ class Viewquestion extends WebPage
 	 * @var int
 	 */
 	protected $numAnswers = 0;
+  
+  
+  /**
+   * Weather the Topic has Question tag
+   * 
+   * 
+   * @var boolean
+   */
+  protected $withQuestionTag = true;
 
 
 	/**
@@ -168,11 +177,20 @@ class Viewquestion extends WebPage
 
 
 		$this->pageID = $this->Registry->Request->get('pageID', 'i', 1);
-		$this->tab = $this->Registry->Request->get('sort', 's', 'i_lm_ts');
 		$this->Registry->registerObservers();
 
-		$this->getQuestion()
-		->addMetas()
+		$this->getQuestion();
+    /**
+     * Make sorting order: oldest=>newest for topics
+     * without tag `question'
+     */
+    if(!in_array('question', $this->Question['a_tags'])){
+      $this->Registry->Request['sort'] = 'i_ts';
+      $this->withQuestionTag = false;
+    }
+    $this->tab = $this->Registry->Request->get('sort', 's', 'i_lm_ts');
+
+		$this->addMetas()
 		->sendCacheHeaders()
 		->configureEditor()
 		->setTitle()
@@ -383,9 +401,10 @@ class Viewquestion extends WebPage
 		/**
 		 * Does not make sense to show
 		 * any type of 'sort by' when there is
-		 * only 1 answer or no answers at all
+		 * only 1 post or no posts at all
+     * and 'sort by' required only for questions.
 		 */
-		if($this->Question['i_ans'] > 1){
+		if($this->Question['i_ans'] > 1 && $this->withQuestionTag){
 			$cond = $this->Registry->Request->get('sort', 's', 'i_lm_ts');
 			$tabs = Urhere::factory($this->Registry)->get('tplAnstypes', $cond);
 		}
