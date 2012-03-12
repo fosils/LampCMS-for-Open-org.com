@@ -174,7 +174,8 @@ class Editor
 		'slug' => true, 
 		'b_active' => true, 
 		'b_catonly' => true,
-		'_id' => false)
+//		'_id' => false)
+		)
 		);
 		
 		return $ret;
