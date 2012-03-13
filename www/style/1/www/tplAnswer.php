@@ -146,7 +146,7 @@ class tplAnswer extends Lampcms\Template\Fast
 		<div id="score%1$s" class="qscore">%6$s</div>
 
 		<a id="downvote-%1$s"
-			title="This poster should pay 20 Profit Points (this costs me 1 Profit Point) (click again to cancel)"
+			title="This poster should loose 20 Profit Points (this costs me 1 Profit Point) (click again to cancel)"
 			class="ttt ajax vote thumbdown down" href="/ansvote/%1$s/down" rel="nofollow">%11$s</a>
 		</div>
 		<div class="acceptit anstype">%13$s</div>
