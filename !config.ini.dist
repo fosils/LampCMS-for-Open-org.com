@@ -86,15 +86,15 @@ SHOW_COMMENTS = 5
 ; the comment. After this time editing
 ; is no longer allowed
 ; set to 0 to disable edit timeout
-COMMENT_EDIT_TIME = 5
+COMMENT_EDIT_TIME = 0
 ; time to wait between comments
 ; in seconds
-COMMENTS_FLOOD_TIME = 30
+COMMENTS_FLOOD_TIME = 15
 ;
 ; time to wait between posting
 ; questions and answers in minutes
 ;
-FLOOD_CHECK_TIME = 2
+FLOOD_CHECK_TIME = 1
 ; number of items per page
 ; on search results page
 PER_PAGE_SEARCH = 10
@@ -557,4 +557,3 @@ MAX_ICON_UPLOAD_SIZE = 700000;
 ; translations directory
 [LOCALES]
 en_US = "English (United States)"
-ru_RU = "Russian"
