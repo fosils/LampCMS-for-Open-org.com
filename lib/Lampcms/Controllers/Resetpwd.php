@@ -72,7 +72,7 @@ class Resetpwd extends WebPage
 	const EMAIL_BODY = 'This email contains your login information for %1$s
 
 Your login: %2$s
-Your password is: %3$s
+Your password is: (hidden)
 
 You are advised to store the above information in a safe place so that you
 do not face any inconvenience in future.

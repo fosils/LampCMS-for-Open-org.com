@@ -72,7 +72,8 @@ class Regform extends Form
 	protected function doValidate(){
 		$this->validateCaptcha()
 		->validateEmail()
-		->validateUsername();
+		->validateUsername()
+		->validatePassword();
 	}
 	
 	protected function init(){
@@ -179,5 +180,23 @@ class Regform extends Form
 
 		return $this;
 
+	}
+
+	/**
+	 * Validate that password is valid
+	 * according to rules set in Validate::enforcePwd
+	 * 
+	 * @return $this
+	 */
+	protected function validatePassword(){
+	  $pwd1 = $this->getSubmittedValue('password');
+	  if (false === Validate::enforcePwd($pwd1)) {
+	    $this->setError('password1', $this->_('Password must be at least 6 characters long and contain at least one number'));
+	  }
+	  $pwd2 = $this->getSubmittedValue('password1');
+	  if($pwd1 !== $pwd2){
+	    $this->setError('password2', $this->_('"New password" and "Confirm new password" do not match'));
+	  }
+	  return $this;
 	}
 }

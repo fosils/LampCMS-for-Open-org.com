@@ -56,6 +56,7 @@ use \Lampcms\String;
 use \Lampcms\Cookie;
 use \Lampcms\Request;
 use \Lampcms\Captcha\Captcha;
+use \Lampcms\Validate;
 
 /**
  * Main class for creating new account
@@ -86,7 +87,7 @@ This email contains your login information for %1$s
 Your login information is as follows:
 
     Username: %2$s
-    Password: %3$s
+    Password: (hidden)
 
 
 You are advised to store the above information in a safe place so that you
@@ -197,8 +198,8 @@ You can change your password after you log in.
 	 * @return object $this
 	 */
 	protected function getSubmittedValues(){
-		$this->username = $this->Form->getSubmittedValue('username');;
-		$this->pwd = \Lampcms\String::makePasswd();
+		$this->username = $this->Form->getSubmittedValue('username');
+		$this->pwd = $this->Form->getSubmittedValue('password');
 		$this->email = \mb_strtolower($this->Form->getSubmittedValue('email'));
 
 		return $this;

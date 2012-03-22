@@ -68,20 +68,20 @@ class tplFormchangepwd extends \Lampcms\Template\Fast
 		<input type="hidden" name="token" value="%1$s">
 		<div class="form_el1"> 
                 <label for="id_current">%4$s</label>: <span class="f_err">%6$s</span><br> 
-                <input autocomplete="off" id="id_current" class="current_c" type="text" name="current" size="20" value="%3$s"> 
+                <input autocomplete="off" id="id_current" class="current_c" type="password" name="current" size="20" value="%3$s"> 
        		  	<div id="current_d" class="caption">%5$s<br><a href="/remindpwd/">%16$s</a></div><hr>
         </div>
        <!-- // el current -->
             
             <div class="form_el1"> 
                 <label for="id_pwd1">%9$s</label>: <span class="f_err">%8$s</span><br> 
-                <input autocomplete="off" id="id_pwd1" class="pwd1_c" type="text" name="pwd1" size="20" value="%7$s"> 
+                <input autocomplete="off" id="id_pwd1" class="pwd1_c" type="password" name="pwd1" size="20" value="%7$s"> 
             </div>
             <!-- // pwd1 -->
             
             <div class="form_el1"> 
             	<label for="id_pwd2">%11$s</label>: <span class="f_err">%12$s</span><br> 
-                <input autocomplete="off" id="id_pwd2" class="pwd2_c" type="text" name="pwd2" size="20" value="%10$s">            
+                <input autocomplete="off" id="id_pwd2" class="pwd2_c" type="password" name="pwd2" size="20" value="%10$s">            
             </div>
             <!-- // pwd2 -->
             

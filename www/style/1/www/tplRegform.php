@@ -63,7 +63,15 @@ class tplRegform extends Lampcms\Template\Fast
 	'username_d' => 'Username will appear alongside your posts', //20
 	'formError' => '', // 21
 	'divID' => 'regdiv', // 22
-	'className' => 'yui-pe-content' // 23
+	'className' => 'yui-pe-content', // 23
+	'password1_1' => 'Password',  //24
+	'password1_d' => 'Please type your password', //25
+	'password1_e' => '', //26
+	'password2_1' => 'Retype password', //27
+	'password2_d' => 'Retype your password', //28
+	'password2_e' => '', //29
+	'password' => '', //30
+	'password1' => '', //31
 	);
 
 	protected static $tpl = '
@@ -106,6 +114,30 @@ class tplRegform extends Lampcms\Template\Fast
 				</div>
 			</td>
 	</tr>
+		<!-- password -->
+		<tr>
+		<td>
+			<div class="tr">
+				<span class="red"> * </span><span class="label2">%24$s</span><br>
+				<input type="password" id="password" maxlength="16" name="password" value="">
+				<br><span class="f_err">%26$s</span>
+				<div class="note2">%25$s</div>
+			</div>
+		</td>
+		</tr>
+
+		<!-- Repeate password -->
+		<tr>
+		<td>
+			<div class="tr">
+				<span class="red"> * </span><span class="label2">%27$s</span><br>
+				<input type="password" id="password1" maxlength="16" name="password1" value="">
+				<br><span class="f_err">%29$s</span>
+				<div class="note2">%28$s</div>
+			</div>
+		</td>
+		</tr>
+
 	<!-- optional TR for Captcha image and form -->
 	<tr>
 	  <td>
