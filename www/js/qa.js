@@ -1175,6 +1175,9 @@ YUI({
 		        resultHighlighter: 'charMatch',
 		        source: '/index.php?a=taghint&q={query}&ajaxid=1&callback={callback}'
 		    });
+		    //TODO:
+		    //make it better
+		    input._node.value='';
 		}
 	},
 	/**
