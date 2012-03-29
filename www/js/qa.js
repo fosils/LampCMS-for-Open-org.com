@@ -1158,8 +1158,13 @@ YUI({
 		var input = (el) ? el : Y.one("#id_tags");
 		if(input){
 			Y.log('got id_tags');
-			Y.one(input).plug(Y.Plugin.TokenInput, {delimiter:' '})
-			
+			Y.one(input).plug(Y.Plugin.TokenInput, {delimiter:' '});
+			/**
+			 * Clear the value in #id_tags before creating the 
+			 * input box to avoid the duplicate tags
+			 * @open-org.com Task:q64.
+			 */
+			input._node.value='';
 			/**
 			 * AutoComplete plug is buggy when
 			 * clicking of suggested values - it
@@ -1168,16 +1173,13 @@ YUI({
 			 * Will wait on this one untill YUI3 fixes this
 			 * bug.
 			 */
-			.plug(Y.Plugin.AutoComplete, {
+			Y.one(input).plug(Y.Plugin.AutoComplete, {
 				resultListLocator : 'ac',
 				resultTextLocator : 'tag',
 				resultFilters: 'charMatch',
 		        resultHighlighter: 'charMatch',
 		        source: '/index.php?a=taghint&q={query}&ajaxid=1&callback={callback}'
 		    });
-		    //TODO:
-		    //make it better
-		    input._node.value='';
 		}
 	},
 	/**
