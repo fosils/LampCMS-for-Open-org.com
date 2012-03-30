@@ -102,7 +102,7 @@ You can also change your password after you log in.
 		->validateCode()
 		->generatePassword()
 		->savePassword()
-		->emailPwd();
+		->emailPwd(TRUE);
 
 		$this->aPageVars['title'] = 'Password reset';
 		$this->aPageVars['body'] = '<div class="frm1">'.sprintf(self::TPL_SUCCESS, $this->email).'</div>';
@@ -293,10 +293,11 @@ You can also change your password after you log in.
 
 	/**
 	 * Send out the new password to user
+	 * password only needs to send when the user forgot password
 	 *
 	 */
-	protected function emailPwd(){
-		$body = vsprintf(self::EMAIL_BODY, array($this->Registry->Ini->SITE_NAME, $this->username, $this->newPwd));
+	protected function emailPwd($usePassword = FALSE){
+	  $body = vsprintf(self::EMAIL_BODY, array($this->Registry->Ini->SITE_NAME, $this->username, $usePassword ? $this->newPwd : '(hidden)'));
 		$subject = sprintf(self::SUBJECT, $this->Registry->Ini->SITE_NAME);
 
 		$this->Registry->Mailer->mail($this->email, $subject, $body);
