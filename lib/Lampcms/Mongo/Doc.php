@@ -594,12 +594,10 @@ class Doc extends LampcmsArray implements \Serializable
 	 *
 	 */
 	protected function update(){
-
 		$ret = false;
 		$aData = $this->getArrayCopy();
 		$whereVal = $this->offsetGet($this->keyColumn);
-		try{
-
+		try {
 			$ret = $this->getRegistry()->Mongo->updateCollection($this->collectionName, $aData, $this->keyColumn, $whereVal, __METHOD__);
 		} catch (\Exception $e){
 			throw new \Lampcms\DevException('Could not update MongoCollection $whereVal: '.$whereVal. ' $aData: '.print_r($aData, 1).' Exception: '.$e->getMessage().' in '.$e->getFile().' line: '.$e->getLine());
@@ -617,7 +615,7 @@ class Doc extends LampcmsArray implements \Serializable
 		 *
 		 * This is why we must test for false and not for empty()
 		 */
-		if(false === $ret){
+		if($ret === false || is_array($ret)) {
 			e('Could not update MongoCollection $whereVal: '.$whereVal. ' $aData: '.print_r($aData, 1));
 
 			return false;
@@ -625,7 +623,7 @@ class Doc extends LampcmsArray implements \Serializable
 
 		$this->setChecksum();
 
-		d('ret: '.$ret.' $new md5: '.$this->md5);
+		d('ret: ' . $ret . ' $new md5: ' . $this->md5);
 		$this->getRegistry()->Dispatcher->post($this, 'onCollectionUpdate');
 
 		return $whereVal;
