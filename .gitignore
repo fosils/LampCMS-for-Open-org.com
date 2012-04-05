@@ -3,5 +3,5 @@
 /GeoLiteCity.dat
 /Mycollections.php
 /Points.php
-/www/php.log
+/www/*.log
 patch*
