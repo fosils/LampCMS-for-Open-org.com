@@ -114,7 +114,7 @@ Interfaces\LinkedinUser
 	 *
 	 * @return object of this class
 	 */
-	public static function factory(Registry $Registry, array $a = array()){
+	public static function factory(Registry $Registry, $collectionName = 'USERS', array $a = array()) {
 		$o = new static($Registry, 'USERS', $a);
 
 		return $o;
