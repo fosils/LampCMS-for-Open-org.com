@@ -109,12 +109,12 @@ Interfaces\LinkedinUser
 	 * Factory method
 	 *
 	 * @param object $Registry Registry object
-	 *
 	 * @param array $a
 	 *
 	 * @return object of this class
 	 */
-	public static function factory(Registry $Registry, $collectionName = 'USERS', array $a = array()) {
+	/* @todo: Solve conflict between this method and Doc::factory. */
+	public static function factory(Registry $Registry, array $a = array()) {
 		$o = new static($Registry, 'USERS', $a);
 
 		return $o;
@@ -126,10 +126,8 @@ Interfaces\LinkedinUser
 	 * @see Lampcms.ArrayDefaults::__get()
 	 */
 	public function __get($name){
-		if('id' === $name){
-
+		if('id' === $name)
 			return $this->getUid();
-		}
 
 		return $this->offsetGet($name);
 	}

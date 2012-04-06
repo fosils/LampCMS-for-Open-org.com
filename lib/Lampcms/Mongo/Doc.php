@@ -176,7 +176,8 @@ class Doc extends LampcmsArray implements \Serializable
 	 *
 	 * @return object of this class OR class extending this class
 	 */
-	public static function factory(Registry $Registry, $collectionName = null, array $a = array()){
+	/* @todo: Solve conflict between this method and User::factory. */
+	public static function factory(Registry $Registry, $collectionName = null, array $a = array(), $default = null){
 		$o = new static($Registry, $collectionName, $a);
 
 		return $o;
