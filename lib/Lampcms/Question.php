@@ -572,10 +572,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @param int $inc could be 1 or -1
 	 */
 	public function addUpVote($inc = 1){
-
-		if($inc !== 1 && $inc !== -1){
+		if($inc !== 1 && $inc !== -1)
 			throw new \InvalidArgumentException('$inc can only be 1 or -1. Was: '.$inc);
-		}
 
 		$tmp = (int)$this->offsetGet('i_up');
 		$score = (int)$this->offsetGet('i_votes');
@@ -593,6 +591,29 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
+    /**
+     * Change the amount of profit point
+     * Makes sure new score can never go lower than 0
+     * @param int $iPoints
+     *
+     * @return object $this
+     */
+    public function addProfitPoint($iPoints) {
+        if(!\is_numeric($iPoints))
+            throw new DevException('value of $iPoints must be numeric, was: '.$iPoints);
+
+        $iPp = $this->offsetGet('i_pp');
+        $iNew = max(0, ($iPp + (int)$iPoints));
+        parent::offsetSet('i_pp', $iNew);
+
+		/**
+		 * Plural extension handling
+		 */
+		$p_s = (abs($iNew) === 1) ? '' : 's';
+		parent::offsetSet('p_s', $p_s);
+
+        return $this;
+    }
 
 	/**
 	 * (non-PHPdoc)

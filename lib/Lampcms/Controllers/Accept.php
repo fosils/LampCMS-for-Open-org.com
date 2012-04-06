@@ -370,7 +370,6 @@ class Accept extends WebPage
 			if(!empty($uid)){
 				try{
 					\Lampcms\User::factory($this->Registry)->by_id($uid)->setProfitPoint((0 - \Lampcms\Points::BEST_ANSWER))->save();
-
 				} catch(\MongoException $e ){
 					e('unable to update the profit point amount for old answerer '.$e->getMessage());
 				}
@@ -419,7 +418,6 @@ class Accept extends WebPage
 	 * @return object $this;
 	 */
 	protected function rewardViewer(){
-
 		/**
 		 * Check that accepted by owner of question
 		 * In case it was accepted by a moderator
@@ -428,6 +426,7 @@ class Accept extends WebPage
 		 */
 		if($this->Question->getOwnerId() == $this->Registry->Viewer->getUid()){
 			$this->Registry->Viewer->setProfitPoint(\Lampcms\Points::ACCEPT_ANSWER)->save();
+			$this->Question->addProfitPoint(\Lampcms\Points::ACCEPT_ANSWER);
 		}
 
 		return $this;

@@ -261,7 +261,6 @@ class Vote extends WebPage
 	 * @return object $this
 	 */
 	protected function setOwnerProfitPoint(){
-
 		$uid = $this->Resource->getOwnerId();
 		d('uid of resource owner: '.$uid);
 		/**
@@ -311,11 +310,10 @@ class Vote extends WebPage
 	 * @return object $this
 	 */
 	protected function increaseVoteCount(){
-		if('up' === $this->voteType){
-			$this->Resource->addUpVote($this->inc)->touch(true);
-		} else {
-			$this->Resource->addDownVote($this->inc)->touch(true);
-		}
+		if($this->voteType === 'up')
+			$this->Resource->addUpVote($this->inc)->addProfitPoint($this->calculatePoints())->touch(true);
+		else
+			$this->Resource->addDownVote($this->inc)->addProfitPoint($this->calculatePoints())->touch(true);
 
 		return $this;
 	}
