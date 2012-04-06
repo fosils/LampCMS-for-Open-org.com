@@ -336,7 +336,7 @@ class Viewquestions extends WebPage
 		$showDeleted 	= $this->Registry->Viewer->isModerator();
 		$contributed	= $this->_('You have contributed to this topic');
 		$following		= $this->_('You are following this topic');
-		$asked			= $this->_('Asked');
+		$asked			= $this->_('');
 		$latestBy		= $this->_('Latest post by');
 		$toggle			= $this->_('Toggle Unread/Read Status');
 		
