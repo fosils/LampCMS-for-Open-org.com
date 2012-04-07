@@ -78,7 +78,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	protected $ansCollection = 'ANSWERS';
 
 	public function __construct(Registry $Registry, array $a = null){
-
 		$a = ($a) ? $a : array();
 		parent::__construct($Registry, 'QUESTIONS', $a);
 	}
@@ -98,10 +97,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @see ResourceInterface::getResourceId()
 	 */
 	public function getResourceId(){
-
 		return $this->offsetGet('_id');
 	}
-
 
 	/**
 	 * Convenience method so that it can be used from
@@ -118,36 +115,29 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this->getResourceId();
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getDeletedTime()
 	 */
 	public function getDeletedTime(){
-
 		return $this->offsetGet('i_del_ts');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getOwnerId()
 	 */
 	public function getOwnerId(){
-
 		return (int)$this->offsetGet('i_uid');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getLastModified()
 	 */
 	public function getLastModified(){
-
 		return $this->offsetGet('i_lm_ts');
 	}
-
 
 	/**
 	 * Get value of i_etag but if it does
@@ -161,7 +151,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return (!empty($ret)) ? $ret : $this->offsetGet('i_lm_ts');
 	}
 
-
 	/**
 	 * Get full (absolute) url for this question,
 	 * including the http and our domain
@@ -169,12 +158,10 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @return string url for this question
 	 */
 	public function getUrl($short = false){
-
 		$url = $this->Registry->Ini->SITE_URL.'/q'.$this->offsetGet('_id').'/';
 
 		return ($short) ? $url : $url.$this->offsetGet('url');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
@@ -183,7 +170,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	public function getBody(){
 		return $this->offsetGet('b');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
@@ -205,7 +191,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this->offsetGet('url');
 	}
 
-
 	/**
 	 * Test to see if question is closed. If it is closed
 	 * then returns array of data that contains
@@ -221,15 +206,12 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return (empty($a)) ? false : $a;
 	}
 
-
 	/**
 	 * @return int number of answers this question has
 	 */
 	public function getAnswerCount(){
-
 		return $this->offsetGet('i_ans');
 	}
-
 
 	/**
 	 * Set time, reason for when question was closed
@@ -241,10 +223,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @return object $this
 	 */
 	public function setClosed(User $closer, $reason = null){
-
-		if($reason){
+		if($reason)
 			$reason = \strip_tags((string)$reason);
-		}
 			
 		if(!$this->offsetExists('a_closed')){
 			parent::offsetSet('a_closed', array(
@@ -261,7 +241,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 *
 	 * Mark this item as deleted but only
@@ -275,12 +254,9 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @return object $this
 	 */
 	public function setDeleted(User $user, $reason = null){
-
-		if(0 === $this->getDeletedTime()){
-
-			if($reason){
+		if(0 === $this->getDeletedTime()) {
+			if($reason)
 				$reason = \strip_tags((string)$reason);
-			}
 
 			parent::offsetSet('i_del_ts', time());
 			parent::offsetSet('a_deleted',
@@ -297,7 +273,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 *
 	 * Adds a_edited array of data to Question
@@ -308,15 +283,12 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @return object $this
 	 */
 	public function setEdited(User $user, $reason = ''){
-
-		if(!empty($reason)){
+		if(!empty($reason))
 			$reason = \strip_tags((string)$reason);
-		}
 
 		$aEdited = $this->offsetGet('a_edited');
-		if(empty($aEdited) || !is_array($aEdited)){
+		if(empty($aEdited) || !is_array($aEdited))
 			$aEdited = array();
-		}
 
 		$aEdited[] = array(
 			'username' => $user->getDisplayName(),
@@ -330,7 +302,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 *
 	 * Set tags for this question
@@ -343,7 +314,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @param array $tags array of tags
 	 */
 	public function retag(User $user, array $tags){
-
 		parent::offsetSet('a_tags', $tags);
 		parent::offsetSet('tags_html', \tplQtags::loop($tags, false));
 
@@ -359,7 +329,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Sets the id of best_answer,
@@ -393,9 +362,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		 * the count of unanswered tags, which
 		 * is done via UnansweredTags object
 		 */
-		if('accptd' !== $this->offsetGet('status')){
+		if('accptd' !== $this->offsetGet('status'))
 			UnansweredTags::factory($this->Registry)->remove($this);
-		}
 
 		parent::offsetSet('status', 'accptd');
 		d('setting status to accptd');
@@ -404,7 +372,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Increases i_ans by $inc, which is usually 1
@@ -417,9 +384,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @param int $inc
 	 */
 	public function updateAnswerCount($inc = 1){
-		if(!\is_int($inc)){
+		if(!\is_int($inc))
 			throw new \InvalidArgumentException('Param $inc must be an integer. was: '.gettype($inc));
-		}
 
 		$iAns = $this->offsetGet('i_ans');
 		d('$iAns '.$iAns );
@@ -434,7 +400,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		 */
 		$newCount = max(0, ($iAns + $inc));
 		d('$newCount: '.$newCount);
-
 		parent::offsetSet('i_ans',  $newCount);
 
 		/**
@@ -444,21 +409,19 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		 * of div to not be red, but it still does not
 		 * make the question 'answered'
 		 */
-		if($newCount < 1){
+		if($newCount < 1)
 			parent::offsetSet('status', 'unans');
-		} elseif('unans' === $this->offsetGet('status')){
+		else if('unans' === $this->offsetGet('status'))
 			parent::offsetSet('status', 'answrd');
-		}
 
 		/**
 		 * If new value is NOT 1 then set
 		 * a_s (plural suffix) to 's'
 		 */
-		if(1 !== ($newCount)){
+		if(1 !== ($newCount))
 			parent::offsetSet('ans_s', 's');
-		} else {
+		else
 			parent::offsetSet('ans_s', '');
-		}
 
 		return $this;
 	}
@@ -474,9 +437,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		$time = time();
 
 		$this->offsetSet('i_etag', $time);
-		if(!$etagOnly){
+		if(!$etagOnly)
 			$this->offsetSet('i_lm_ts', $time);
-		}
 
 		return $this;
 	}
@@ -500,9 +462,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @return object $this
 	 */
 	public function increaseViews(\Lampcms\User $Viewer, $inc = 1){
-		if(!\is_int($inc)){
+		if(!\is_int($inc))
 			throw new \InvalidArgumentException('Param $inc must be an integer. was: '.gettype($inc));
-		}
 
 		/**
 		 * @todo Don't count question owner view
@@ -561,7 +522,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		}
 
 		return $this;
-
 	}
 
 
@@ -579,13 +539,13 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		$score = (int)$this->offsetGet('i_votes');
 		$total = ($score + $inc);
 
-		parent::offsetSet('i_up',  max(0, ($tmp + $inc)) );
-		parent::offsetSet('i_votes',  $total );
+		parent::offsetSet('i_up',  max(0, ($tmp + $inc)));
+		parent::offsetSet('i_votes',  $total);
 
 		/**
 		 * Plural extension handling
 		 */
-		$v_s = (1 === abs($total) ) ? '' : 's';
+		$v_s = (abs($total) === 1) ? '' : 's';
 		parent::offsetSet('v_s', $v_s);
 
 		return $this;
@@ -603,7 +563,7 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
             throw new DevException('value of $iPoints must be numeric, was: '.$iPoints);
 
         $iPp = $this->offsetGet('i_pp');
-        $iNew = max(0, ($iPp + (int)$iPoints));
+        $iNew = $iPp + (int)$iPoints;
         parent::offsetSet('i_pp', $iNew);
 
 		/**
@@ -620,16 +580,15 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @see Lampcms\Interfaces.UpDownRatable::addDownVote()
 	 */
 	public function addDownVote($inc = 1){
-
-		if($inc !== 1 && $inc !== -1){
+		if($inc !== 1 && $inc !== -1)
 			throw new \InvalidArgumentException('$inc can only be 1 or -1. Was: '.$inc);
-		}
 
 		$tmp = (int)$this->offsetGet('i_down');
 		$score = (int)$this->offsetGet('i_votes');
 		$total = ($score - $inc);
 
 		parent::offsetSet('i_down', max(0, ($tmp + $inc)) );
+
 		/**
 		 * Question can have negative score, so we allow it!
 		 */
@@ -649,8 +608,7 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * (non-PHPdoc)
 	 * @see Lampcms\Interfaces.UpDownRatable::getVotesArray()
 	 */
-	public function getVotesArray(){
-
+	public function getVotesArray() {
 		$a = array(
 		'up' => $this->offsetGet('i_up'), 
 		'down' => $this->offsetGet('i_down'),
@@ -665,7 +623,7 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @see Lampcms\Interfaces.UpDownRatable::getScore()
 	 */
 	public function getScore(){
-		return $this->offsetGet('i_votes');
+		return max(0, $this->offsetGet('i_pp'));
 	}
 
 
@@ -737,10 +695,10 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * Increase value of i_commets by 1
 	 * @return object $this
 	 */
-	public function increaseCommentsCount($count = 1){
-		if(!is_int($count)){
+	public function increaseCommentsCount($count = 1) {
+		if(!is_int($count))
 			throw new \InvalidArgumentException('$count must be integer. was: '.gettype($count));
-		}
+
 		/**
 		 * Now increase comments count
 		 */
@@ -751,7 +709,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Remove one comment from array of comments
@@ -764,7 +721,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @see Lampcms\Interfaces.CommentedResource::deleteComment()
 	 */
 	public function deleteComment($id){
-
 		if(0 === $this->getCommentsCount()){
 			d('This question does not have any comments');
 
@@ -792,7 +748,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Add userid of User to the list
@@ -824,7 +779,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 * Remove user id of User $User
 	 * from array of contributors
@@ -838,10 +792,8 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 * @param mixed int | User $User
 	 */
 	public function removeContributor($User){
-
-		if(!is_int($User) && (!is_object($User) || !($User instanceof User))){
+		if(!is_int($User) && (!is_object($User) || !($User instanceof User)))
 			throw new \InvalidArgumentException('Value of $User can be only int or instance of User class. it was: '.var_export($User, true));
-		}
 
 		$changed = false;
 		$uid = (\is_int($User)) ? $User : $User->getUid();
@@ -861,7 +813,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Add userID of user to the array
@@ -890,7 +841,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 * Remove userID of user from the array
 	 * of a_flwrs
@@ -918,7 +868,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 
 		return $this;
 	}
-
 
 	/**
 	 * Sets value of lp_u : a link to Last Poster profile
@@ -953,7 +902,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 * Removes one element from a_latest array
 	 * that represents answer passed in param.
@@ -977,11 +925,10 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 			}
 		}
 
-		if( 0 === count($aLatest)){
+		if(count($aLatest) === 0)
 			$this->offsetUnset('a_latest');
-		} else {
+		else
 			parent::offsetSet('a_latest', $aLatest);
-		}
 
 		/**
 		 * If removed Answer was also a "accepted" answer
@@ -1013,7 +960,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 * Getter for 'comments' element
 	 * @return array of comments or empty array if
@@ -1023,7 +969,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	public function getComments(){
 		return $this->offsetGet('a_comments');
 	}
-
 
 	/**
 	 * Get one comment from
@@ -1036,21 +981,17 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 *
 	 */
 	public function getComment($id){
-		if(!\is_int($id)){
+		if(!\is_int($id))
 			throw new DevException('param $id must be integer. Was: '.$id);
-		}
 
 		$aComments = $this->getComments();
-
 		for($i = 0; $i<count($aComments); $i+=1){
-			if($id == $aComments[$i]['_id']){
+			if($id == $aComments[$i]['_id'])
 				return $aComments[$i];
-			}
 		}
 
 		return false;
 	}
-
 
 	/**
 	 * Sets the 'a_comments' key via parent::offsetSet
@@ -1069,13 +1010,12 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		return $this;
 	}
 
-
 	/**
 	 * Get id of question asker
 	 *
 	 * @return int id of user who asked (owner) of the question
 	 */
-	public function getQuestionOwnerId(){
+	public function getQuestionOwnerId() {
 		return $this->getOwnerId();
 	}
 
@@ -1098,7 +1038,6 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 	 */
 	public function offsetSet($index, $newval){
 		switch($index){
-
 			case 'i_comments':
 				throw new DevException('value of i_comments cannot be set directly. Use increaseCommentsCount() method');
 				break;

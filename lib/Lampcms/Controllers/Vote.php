@@ -49,13 +49,11 @@
  *
  */
 
-
 namespace Lampcms\Controllers;
 
 use \Lampcms\Responder;
 use \Lampcms\WebPage;
 use \Lampcms\Request;
-
 
 /**
  * Controller for processing a vote
@@ -73,13 +71,9 @@ use \Lampcms\Request;
  */
 class Vote extends WebPage
 {
-
 	protected $membersOnly = true;
-
 	protected $permission = 'vote';
-
 	protected $aRequired = array('resid', 'type', 'res');
-
 	protected $resID;
 
 	/**
@@ -104,7 +98,6 @@ class Vote extends WebPage
 	 */
 	protected $voteType;
 
-
 	/**
 	 * By how much to increment the up/down vote
 	 * this is either 1 or -1
@@ -113,19 +106,16 @@ class Vote extends WebPage
 	 */
 	protected $inc = 1;
 
-
-
 	protected function main(){
 		$this->Registry->registerObservers('INPUT_FILTERS');
 		$this->resID = (int)$this->Request['resid'];
 		$this->voteType = $this->Request['type'];
 		$this->resType = ('a' === $this->Request['res']) ? 'ANSWERS' : 'QUESTIONS';
 
-		if(!in_array($this->voteType, array('up', 'down'))){
+		if(!in_array($this->voteType, array('up', 'down')))
 			throw new \Lampcms\Exception('Invalid type of vote');
-		}
 
-		try{
+		try {
 			$this->getResource()
 			->postBeforeEvent()
 			->checkIsOwner()
@@ -134,8 +124,8 @@ class Vote extends WebPage
 			->updateQuestion()
 			->setOwnerProfitPoint()
 			->postEvent();
-		} catch (\Exception $e){
-			d('Vote not counted due to exception: '.$e->getMessage().' in '.$e->getFile().' line: '.$e->getLine());
+		} catch (\Exception $e) {
+			d('Vote not counted due to exception: ' . $e->getMessage() . ' in ' . $e->getFile() . ' line: ' . $e->getLine());
 		}
 
 		$this->handleReturn();
@@ -346,7 +336,7 @@ class Vote extends WebPage
 
 	protected function handleReturn(){
 		$isAjax = Request::isAjax();
-		d('$isAjax: '.$isAjax);
+		d('$isAjax: ' . $isAjax);
 
 		if($isAjax){
 			$ret = array(

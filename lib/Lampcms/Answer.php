@@ -49,9 +49,7 @@
  *
  */
 
-
 namespace Lampcms;
-
 
 /**
  *
@@ -63,19 +61,16 @@ namespace Lampcms;
  */
 class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces\UpDownRatable, Interfaces\CommentedResource
 {
-
 	public function __construct(Registry $Registry, array $a = null){
 		$a = ($a) ? $a : array();
 		parent::__construct($Registry, 'ANSWERS', $a);
 	}
-
 
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getResourceTypeId()
 	 */
 	public function getResourceTypeId(){
-
 		return 'ANSWER';
 	}
 
@@ -109,7 +104,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * @see ResourceInterface::getResourceId()
 	 */
 	public function getResourceId(){
-
 		return $this->offsetGet('_id');
 	}
 
@@ -119,7 +113,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * @see LampcmsResourceInterface::getDeletedTime()
 	 */
 	public function getDeletedTime(){
-
 		return $this->offsetGet('i_del_ts');
 	}
 
@@ -148,9 +141,8 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 */
 	public function setDeleted(User $user, $reason = null){
 		if(0 === $this->getDeletedTime()){
-			if($reason){
+			if($reason)
 				$reason = \strip_tags((string)$reason);
-			}
 
 			parent::offsetSet('i_del_ts', time());
 			parent::offsetSet('a_deleted',
@@ -167,7 +159,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 *
 	 * Adds a_edited array of data to Question
@@ -178,14 +169,12 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * @return object $this
 	 */
 	public function setEdited(User $user, $reason = ''){
-		if(!empty($reason)){
+		if(!empty($reason))
 			$reason = \strip_tags((string)$reason);
-		}
 
 		$aEdited = $this->offsetGet('a_edited');
-		if(empty($aEdited) || !is_array($aEdited)){
+		if(empty($aEdited) || !is_array($aEdited))
 			$aEdited = array();
-		}
 
 		$aEdited[] = array(
 			'username' => $user->getDisplayName(),
@@ -199,23 +188,19 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getOwnerId()
 	 */
 	public function getOwnerId(){
-
 		return $this->offsetGet('i_uid');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
 	 * @see LampcmsResourceInterface::getLastModified()
 	 */
 	public function getLastModified(){
-
 		return $this->offsetGet('i_lm_ts');
 	}
 
@@ -232,16 +217,30 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
+    public function addProfitPoint($iPoints) {
+        if(!\is_numeric($iPoints))
+            throw new DevException('value of $iPoints must be numeric, was: '.$iPoints);
+
+        $iPp = $this->offsetGet('i_pp');
+        $iNew = $iPp + (int)$iPoints;
+        parent::offsetSet('i_pp', $iNew);
+
+        /**
+         * Plural extension handling
+         */
+        $p_s = (abs($iNew) === 1) ? '' : 's';
+        parent::offsetSet('p_s', $p_s);
+
+        return $this;
+    }
 
 	/**
 	 * (non-PHPdoc)
 	 * @see UpDownRatable::addUpVote()
 	 */
 	public function addUpVote($inc = 1){
-
-		if(1 !== $inc && (-1 !== $inc)){
+		if(1 !== $inc && (-1 !== $inc))
 			throw \InvalidArgumentException('$inc can only be 1 or -1. Was: '.$inc);
-		}
 
 		$tmp = (int)$this->offsetGet('i_up');
 		$score = (int)$this->offsetGet('i_votes');
@@ -259,16 +258,13 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see UpDownRatable::addDownVote()
 	 */
 	public function addDownVote($inc = 1){
-
-		if(1 !== $inc && (-1 !== $inc)){
+		if(1 !== $inc && (-1 !== $inc))
 			throw \InvalidArgumentException('$inc can only be 1 or -1. Was: '.$inc);
-		}
 
 		$tmp = (int)$this->offsetGet('i_down');
 		$score = (int)$this->offsetGet('i_votes');
@@ -286,13 +282,11 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see UpDownRatable::getVotesArray()
 	 */
 	public function getVotesArray(){
-
 		$a = array(
 		'up' => $this->offsetGet('i_up'), 
 		'down' => $this->offsetGet('i_down'),
@@ -301,16 +295,13 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $a;
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see UpDownRatable::getScore()
 	 */
 	public function getScore(){
-
-		return $this->offsetGet('i_votes');
+		return max(0, $this->offsetGet('i_pp'));
 	}
-
 
 	/**
 	 * Get full (absolute) url for this question,
@@ -329,7 +320,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this->Registry->Ini->SITE_URL.'/q'.$this->offsetGet('i_qid').'/#ans'.$this->offsetGet('_id');
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see Lampcms\Interfaces.Post::getBody()
@@ -337,7 +327,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	public function getBody(){
 		return $this->offsetGet('b');
 	}
-
 
 	/**
 	 * (non-PHPdoc)
@@ -347,7 +336,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this->offsetGet('title');
 	}
 
-
 	/**
 	 * (non-PHPdoc)
 	 * @see Lampcms\Interfaces.Post::getSeoUrl()
@@ -355,7 +343,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	public function getSeoUrl(){
 		return '';
 	}
-
 
 	/**
 	 * (non-PHPdoc)
@@ -392,15 +379,11 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		 */
 		$aComment = $Comment->getArrayCopy();
 		$aComment = \array_intersect_key($aComment, array_flip($aKeys));
-
 		$aComments[] = $aComment;
-
 		$this->setComments($aComments);
 
 		return $this;
-
 	}
-
 
 	/**
 	 * (non-PHPdoc)
@@ -412,7 +395,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return count($aComments);
 	}
 
-
 	/**
 	 *
 	 * Increase value of i_comments by 1
@@ -421,9 +403,8 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * @return object $this
 	 */
 	public function increaseCommentsCount($count = 1){
-		if(!is_int($count)){
+		if(!is_int($count))
 			throw new \InvalidArgumentException('$count must be integer. was: '.gettype($count));
-		}
 
 		/**
 		 * Now increase comments count
@@ -442,7 +423,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 * Remove one comment from array of comments
 	 * then re-save the new array of comments
@@ -453,9 +433,8 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * (non-PHPdoc)
 	 * @see Lampcms\Interfaces.CommentedResource::deleteComment()
 	 */
-	public function deleteComment($id){
-
-		if(0 === $this->getCommentsCount()){
+	public function deleteComment($id) {
+		if(0 === $this->getCommentsCount()) {
 			e('This question does not have any comments');
 
 			return $this;
@@ -463,8 +442,8 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 
 		$aComments = $this->offsetGet('a_comments');
 
-		for($i = 0; $i<count($aComments); $i+=1){
-			if($id == $aComments[$i]['_id']){
+		for($i = 0; $i<count($aComments); $i++) {
+			if($id == $aComments[$i]['_id']) {
 				d('unsetting comment: '.$i);
 				\array_splice($aComments, $i, 1);
 				break;
@@ -472,17 +451,15 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		}
 
 		$newCount = count($aComments);
-		if( 0 === $newCount){
+		if($newCount === 0)
 			$this->offsetUnset('a_comments');
-		} else {
+		else
 			$this->setComments($aComments);
-		}
 
 		return $this;
 	}
 
-
-	public function getCategoryId(){
+	public function getCategoryId() {
 		return $this->offsetGet('i_cat');
 	}
 
@@ -492,11 +469,9 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 * 'comments' element not present in the object
 	 *
 	 */
-	public function getComments(){
-
+	public function getComments() {
 		return $this->offsetGet('a_comments');
 	}
-
 
 	/**
 	 * Get one comment from
@@ -509,21 +484,18 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	 *
 	 */
 	public function getComment($id){
-		if(!\is_int($id)){
+		if(!\is_int($id))
 			throw new DevException('Param $id must be integer. Was: '.$id);
-		}
 
 		$aComments = $this->getComments();
 
-		for($i = 0; $i<count($aComments); $i+=1){
-			if($id == $aComments[$i]['_id']){
+		for($i = 0; $i<count($aComments); $i++) {
+			if($id == $aComments[$i]['_id'])
 				return $aComments[$i];
-			}
 		}
 
 		return false;
 	}
-
 
 	/**
 	 * Sets the 'a_comments' key via parent::offsetSet
@@ -542,7 +514,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		return $this;
 	}
 
-
 	/**
 	 * Get id of question for this answer
 	 *
@@ -551,7 +522,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	public function getQuestionId(){
 		return (int)$this->offsetGet('i_qid');
 	}
-
 
 	/**
 	 * Get uid of user who asked the question
@@ -565,7 +535,6 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 	public function getQuestionOwnerId(){
 		return (int)$this->offsetGet('i_quid');
 	}
-
 
 	/**
 	 * This method prevents setting some
@@ -592,12 +561,12 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 			case 'i_down':
 			case 'i_up':
 			case 'i_votes':
-				throw new DevException('value of '.$index.' keys cannot be set directly. Use addDownVote or addUpVote to add votes');
+				throw new DevException('value of ' . $index . ' keys cannot be set directly. Use addDownVote or addUpVote to add votes');
 				break;
 
 			case 'a_deleted':
 			case 'i_del_ts':
-				throw new DevException('value of '.$index.' cannot be set directly. Must use setDeleted() method for that');
+				throw new DevException('value of ' . $index . ' cannot be set directly. Must use setDeleted() method for that');
 				break;
 
 			case 'a_edited':
@@ -608,5 +577,4 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 				parent::offsetSet($index, $newval);
 		}
 	}
-
 }
