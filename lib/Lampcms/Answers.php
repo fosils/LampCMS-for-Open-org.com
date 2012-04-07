@@ -67,7 +67,6 @@ namespace Lampcms;
  */
 class Answers extends LampcmsObject
 {
-
 	/**
 	 * Mongo cursor
 	 *
@@ -75,11 +74,9 @@ class Answers extends LampcmsObject
 	 */
 	protected $Cursor;
 
-
 	public function __construct(Registry $Registry){
 		$this->Registry = $Registry;
 	}
-
 
 	/**
 	 * Get html div with answers for this one question,
@@ -118,9 +115,8 @@ class Answers extends LampcmsObject
 		 * anything in Mongo methods directly from
 		 * user input
 		 */
-		if(!in_array($cond, array('i_ts', 'i_votes', 'i_lm_ts'))){
+		if(!in_array($cond, array('i_ts', 'i_votes', 'i_lm_ts')))
 			throw new Exception('invalid value of param "cond" was: '.$cond);
-		}
 
 		$where = array('i_qid' => $qid);
 		if(!$this->Registry->Viewer->isModerator()){
@@ -150,7 +146,6 @@ class Answers extends LampcmsObject
 		'append' => false)); //, 'fileName' => '&pageID=%d'
 
 		$pagerLinks = $oPager->getLinks();
-
 		$func = null;
 		$ownerId = $Question['i_uid'];
 		$showLink = (($ownerId > 0) && ($this->Registry->Viewer->isModerator() || $ownerId == $this->Registry->Viewer->getUid()) );
@@ -173,13 +168,10 @@ class Answers extends LampcmsObject
 			 * Don't show Accept link for
 			 * already accepted answer
 			 */
-			if(!($a['accepted'])){
-				if($showLink){
-					$a['accept_link'] = '<a class="accept ttt" title="'.$alt.'" href="/accept/'.$a['_id'].'">'.$accept.'</a>';
-				}
-			} else {
-				$a['accepted'] = '<img src="/images/accepted.png" alt="Best answer" class="ttt" title="'.$alt2.'">';
-			}
+			if(($a['accepted']))
+                $a['accepted'] = '<img src="/images/accepted.png" alt="Best answer" class="ttt" title="'.$alt2.'">';
+            else if($showLink)
+                $a['accept_link'] = '<a class="accept ttt" title="'.$alt.'" href="/accept/'.$a['_id'].'">'.$accept.'</a>';
 			
 			$a['add_comment'] = $addcomment;
 			$a['nocomments']  = $noComments;
@@ -195,6 +187,5 @@ class Answers extends LampcmsObject
 		$answers = \tplAnswer::loop($cursor, true, $func).$pagerLinks;
 
 		return $answers;
-
 	}
 }
