@@ -88,7 +88,7 @@ class tplQrecent extends Lampcms\Template\Fast {
             <div class="vts">
                 <div class="vtss">
                     <span class="cnt">%29$s</span>
-                    <div rel="in">profit point%30$s</div>
+                    <div rel="in">Profit Point%30$s</div>
                 </div>
             </div>
             <div class="status %10$s">%3$s <span rel="in">post%17$s</span></div>
