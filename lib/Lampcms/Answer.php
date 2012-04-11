@@ -219,7 +219,7 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 
     public function addProfitPoint($iPoints) {
         if(!\is_numeric($iPoints))
-            throw new DevException('value of $iPoints must be numeric, was: '.$iPoints);
+            throw new DevException('value of $iPoints must be numeric, was: ' . $iPoints);
 
         $iPp = $this->offsetGet('i_pp');
         $iNew = $iPp + (int)$iPoints;
@@ -270,7 +270,7 @@ class Answer extends \Lampcms\Mongo\Doc implements Interfaces\Answer, Interfaces
 		$score = (int)$this->offsetGet('i_votes');
 		$total = ($score - $inc);
 
-		parent::offsetSet('i_down', max(0, ($tmp + $inc)) );
+		parent::offsetSet('i_down', max(0, ($tmp + $inc)));
 		parent::offsetSet('i_votes',  $total);
 
 		/**

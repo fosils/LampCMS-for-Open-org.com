@@ -592,7 +592,7 @@ class Question extends \Lampcms\Mongo\Doc implements Interfaces\Question, Interf
 		/**
 		 * Question can have negative score, so we allow it!
 		 */
-		parent::offsetSet('i_votes', $total );
+		parent::offsetSet('i_votes', $total);
 
 		/**
 		 * Plural extension handling
