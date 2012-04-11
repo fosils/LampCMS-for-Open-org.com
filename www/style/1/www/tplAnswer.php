@@ -132,18 +132,19 @@ class tplAnswer extends Lampcms\Template\Fast
 	'i_comments' => '0', // 20
 	'nocomments' => '', //21
 	'i_lm_ts' => '0', // 22
-	'add_comment' => 'add comment' //23
+	'add_comment' => 'add comment', //23
+	'i_pp' => '0' //24
 	);
 
 
-	protected static $tpl = '<table class="ans_table%16$s" id="ans%1$s" lampcms:rid="%1$s" lampcms:i_votes="%6$s" lampcms:i_lm_ts="%22$s" lampcms:i_comments="%20$s" lampcms:i_uid="%7$s">
+	protected static $tpl = '<table class="ans_table%16$s" id="ans%1$s" lampcms:rid="%1$s" lampcms:i_votes="%24$s" lampcms:i_lm_ts="%22$s" lampcms:i_comments="%20$s" lampcms:i_uid="%7$s">
 	<tr>
 		<td class="td_votes" width="60px">
 		<div class="votebtns cb" id="vote%1$s">
 		<a id="upvote-%1$s"
 			title="This poster deserves 100 Profit Points (click again to cancel)"
 			class="ttt ajax vote thumbup" href="/ansvote/%1$s/up" rel="nofollow">%10$s</a>
-		<div id="score%1$s" class="qscore">%6$s</div>
+		<div id="score%1$s" class="qscore">%24$s</div>
 
 		<a id="downvote-%1$s"
 			title="This poster should loose 20 Profit Points (this costs me 1 Profit Point) (click again to cancel)"
