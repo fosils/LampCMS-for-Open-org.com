@@ -136,7 +136,8 @@ class tplQuestion extends Lampcms\Template\Fast
 	'add_comment' => 'add comment', //23
 	'cc' => '', // 24
 	'cn' => '', //25
-	'city' => '' //26
+	'city' => '', //26
+	'i_pp' => '0' //27
 	);
 
 	protected static $tpl = '
@@ -147,7 +148,7 @@ class tplQuestion extends Lampcms\Template\Fast
 		<a id="upvote-%1$s"
 			title="This poster deserves 100 Profit Points (click again to cancel)"
 			class="ajax ttt vote thumbup" href="/vote/%1$s/up" rel="nofollow">%13$s</a>
-		<div id="score%1$s" class="qscore">%8$s</div>
+		<div id="score%1$s" class="qscore">%27$s</div>
 
 		<a id="downvote-%1$s"
 			title="This poster should loose 20 Profit Points (this costs me 1 Profit Point) (click again to cancel)"
