@@ -49,7 +49,7 @@ class tplToptabs extends Lampcms\Template\Fast
 		'tags_c' => '',
 		'ask_c' => '',
 		'questions' => 'Topics',
-		'unanswered' => 'No responses',
+		'open tasks' => 'Open tasks',
 		'tags' => 'Tags',
 		'ask' => 'Start new topic',
 		'search' => '', //9
@@ -63,7 +63,7 @@ class tplToptabs extends Lampcms\Template\Fast
 	protected static $tpl = '<div id="navtabs" class="doc3">
                     <ul>
                         <li class="ttab%1$s"><a id="tab-q" href="/questions/">%5$s</a></li>
-                        <li class="ttab%2$s"><a id="tab-un" href="/unanswered/">%6$s</a></li>
+                        <li class="ttab%2$s"><a id="tab-un" href="/tagged/tasks_ready_for_implementation/">%6$s</a></li>
                         <li class="ttab%3$s"><a id="tab-t" href="/tags/">%7$s</a></li>
                         <li class="ttab%10$s"><a id="tab-m" href="/users/">%11$s</a></li>
                         <li class="ttab%4$s"><a id="tab-ask" href="/ask/">%8$s</a></li>
