@@ -142,10 +142,23 @@ class ProfileDiv extends LampcmsObject
 			'editRole' => Usertools::getHtml($this->Registry, $this->User),
 			'followButton' => $this->makeFollowButton(),
 			'followers' => ShowFollowers::factory($this->Registry)->getUserFollowers($this->User),
-			'following' => ShowFollowers::factory($this->Registry)->getUserFollowing($this->User)
+			'following' => ShowFollowers::factory($this->Registry)->getUserFollowing($this->User),
+			'Email' => $this->GetEmail()
 		);
 
 		return \tplUserInfo::parse($vars);
+	}
+	/**
+	*
+	*/
+	public function GetEmail()
+	{
+		$isSameUser = ($this->Registry->Viewer->getUid() === $uid);
+		if ($isSameUser||$this->Registry->Viewer->isModerator())
+		{
+			return $this->User->offsetGet('email');
+		}
+		return '';
 	}
 
 
