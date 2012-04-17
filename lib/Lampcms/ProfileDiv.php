@@ -106,6 +106,7 @@ class ProfileDiv extends LampcmsObject
 
 	public function getHtml(){
 		$edit = '';
+		$email = '';
 		$lastActive = $this->User['i_lm_ts'];
 		$lastActive = (!empty($lastActive)) ? $lastActive : $this->User['i_reg_ts'];
 		$pp = $this->User->getProfitPoint();
@@ -115,6 +116,7 @@ class ProfileDiv extends LampcmsObject
 		$isSameUser = ($this->Registry->Viewer->getUid() === $uid);
 		if($isSameUser || $this->Registry->Viewer->isModerator()){
 			$edit = '<div class="fl middle"><span class="icoc key">&nbsp;</span><a href="/editprofile/'.$uid.'" class="edit middle">Edit profile</a></div>';
+			$email = $this->User->offsetGet('email');
 		}
 
 		$desc = \trim($this->User['description']);
@@ -142,7 +144,8 @@ class ProfileDiv extends LampcmsObject
 			'editRole' => Usertools::getHtml($this->Registry, $this->User),
 			'followButton' => $this->makeFollowButton(),
 			'followers' => ShowFollowers::factory($this->Registry)->getUserFollowers($this->User),
-			'following' => ShowFollowers::factory($this->Registry)->getUserFollowing($this->User)
+			'following' => ShowFollowers::factory($this->Registry)->getUserFollowing($this->User),
+			'email' => $email,
 		);
 
 		return \tplUserInfo::parse($vars);

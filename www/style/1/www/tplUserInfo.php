@@ -87,6 +87,8 @@ class tplUserInfo extends Lampcms\Template\Fast
 	'bloggerLabel' => 'Blogger', //33
 	'linkedin' => '', //34
 	'linkedinLabel' => 'LinkedIn', //35
+	'email' => '',
+	'emailLabel' => 'E-mail',
 	);
 	
 	
@@ -109,6 +111,10 @@ class tplUserInfo extends Lampcms\Template\Fast
 	<tr>
 		<td class="ar">%27$s</td>
 		<td>%26$s</td>
+	</tr>
+	<tr>
+		<td class="ar">%37$s</td>
+		<td>%36$s</td>
 	</tr>
 	<tr>
 		<td class="ar">%8$s</td>
