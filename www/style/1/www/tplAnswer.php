@@ -156,6 +156,7 @@ class tplAnswer extends Lampcms\Template\Fast
 
 		<td class="td_answer">
 		<div class="ans_body" id="ansbody-%1$s">%2$s</div>
+		<a name="a%1$s"></a>
 
 		<div class="answer controls uid-%7$s" id="res_%1$s">
 		   	<span class="ico flag ttt ajax" title="Flag this post as inappropriate">flag</span>%19$s
@@ -168,7 +169,7 @@ class tplAnswer extends Lampcms\Template\Fast
             </td>
             <td class="td_poster">
             <div class="usr_info2">
-            <div class="qtime">posted <span title="%5$s" class="ts">%5$s</span></div>
+            <div class="qtime">posted <a href="#a%1$s"><span title="%5$s" class="ts">%5$s</span></a></div>
             <div class="avtr32">
              <img src="%4$s" height="32" width="32" alt="">
             </div>
