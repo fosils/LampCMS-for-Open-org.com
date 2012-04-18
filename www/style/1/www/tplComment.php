@@ -100,7 +100,7 @@ class tplComment extends \Lampcms\Template\Fast
 			</div>
 			<div class="com_tools controls uid-%5$s" id="res_%1$s">
 				<div class="com_auth usr usr_%5$s fl"><a href="/users/%5$s/" class="iu usr-%5$s commentor%8$s">%4$s</a></div>	
-				<div title="%3$s" class="com_ts ts fl">%6$s</div>
+				<div title="%3$s" class="com_ts ts fl"><a href="#c%1$s">%6$s</a></div>
 				%11$s
 				%9$s		
 			</div>	
