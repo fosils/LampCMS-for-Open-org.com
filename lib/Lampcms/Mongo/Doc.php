@@ -616,7 +616,7 @@ class Doc extends LampcmsArray implements \Serializable
 		 *
 		 * This is why we must test for false and not for empty()
 		 */
-		if($ret === false || is_array($ret)) {
+		if($ret === false || (is_array($ret) && $ret['err'])) {
 			e('Could not update MongoCollection $whereVal: '.$whereVal. ' $aData: '.print_r($aData, 1));
 
 			return false;
