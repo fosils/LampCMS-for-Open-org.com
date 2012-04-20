@@ -601,7 +601,9 @@ Interfaces\LinkedinUser
 	 */
 	public function setTime(){
 		$tz = $this->offsetGet('tz');
-		if(!empty($tz)){
+
+                // this always seems to pick Atlantic/Azores time zone, so disable it
+		if(false && !empty($tz)){
 			if (false === @\date_default_timezone_set( $tz )) {
 				d( 'Error: wrong value of timezone: '.$tz );
 			}
