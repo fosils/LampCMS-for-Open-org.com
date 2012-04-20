@@ -129,47 +129,47 @@ namespace Lampcms\Modules\Observers;
 class EmailNotifier extends \Lampcms\Event\Observer
 {
 	protected static $QUESTION_BY_USER_BODY = '
-%1$s has asked a question:
+%1$s has started a new topic:
 %2$s
-	
+
 -------------
 %3$s
 
-	
+
 Visit this url %4$s
-to read the entire question
-and try to answer it if you can.
-		
+to read the entire topic
+and post a helpful reply if you can.
+
 ----
-You receive this message because you are following
+You received this message because you are following
 the user %1$s.
-	
-You can change your email preferences by signing in to 
+
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email Preferences
 
 	';
 
 
 	protected static $ANSWER_BY_USER_BODY = '
-%1$s has answered a question:
+%1$s has made a post in a topic:
 %2$s
 
 
 Visit this url %4$s
-to read the entire question and the answer
-	
+to read the entire topic.
+
 ----
 You receive this message because you are following
 the user %1$s.
 
-You can change your email preferences by signing in to 
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email Preferences
 
 	';
 
 
 	protected static $QUESTION_BY_TAG_BODY = '
-%1$s has asked a question:
+%1$s has started a new topic:
 %2$s
 
 -------------
@@ -177,15 +177,15 @@ site %5$s and navigating to Settings > Email Preferences
 
 
 Visit this url %4$s
-to read the entire question
-and try to answer it if you can.
+to read the entire topic
+and post a helpful reply if you can.
 
 
 ----
-You receive this message because question contains one
-of the tags you follow
+You received this message because the topic is tagged
+with one of the tags you follow.
 
-You can change your email preferences by signing in to 
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email Preferences
 
 ';
@@ -193,36 +193,36 @@ site %5$s and navigating to Settings > Email Preferences
 
 	protected static $QUESTION_FOLLOW_BODY = '
 %1$s has added a new %2$s
-to a question you follow:
+to a topic you follow:
 %3$s
 %6$s
 
 Visit this url %4$s
-to read the entire question
+to read the entire topic.
 
 ----
-You receive this message because you are
-following this question
+You received this message because you are
+following this topic.
 
-You can change your email preferences by signing in to 
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email preferences
 
 ';
 
 
 	protected static $ANS_COMMENT_BODY = '
-%1$s commented on your answer to a question 
+%1$s commented on your reply to a topic
 %2$s
 
-Their comment was:	
+Their comment was:
 %3$s
 
-Visit this url to see the answer with the new comment:
+Visit this url to see the post with the new comment:
 
 %4$s
 
 ----
-You can change your email preferences by signing in to 
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email preferences
 
 ';
@@ -230,34 +230,34 @@ site %5$s and navigating to Settings > Email preferences
 
 	protected static $COMMENT_REPLY_BODY = '
 %1$s has posted a reply to your comment
-You comment was:
+Your comment was:
 ============================
 %2$s
 ============================
 
 This is the reply:
-============================	
+============================
 %3$s
 ============================
 
-Visit this url to see the answer with the new comment:
+Visit this url to see the post with the new comment:
 
 %4$s
 
 ----
-You can change your email preferences by signing in to 
+You can change your email preferences by signing in to
 site %5$s and navigating to Settings > Email preferences
 
 ';
 
 
-	protected static $ANS_COMMENT_SUBJ = '%s commented on your answer';
+	protected static $ANS_COMMENT_SUBJ = '%s commented on your post';
 
 	protected static $QUESTION_BY_USER_SUBJ = 'New %s by %s';
 
-	protected static $QUESTION_BY_TAG_SUBJ = 'New question tagged: [%s]';
+	protected static $QUESTION_BY_TAG_SUBJ = 'New topic tagged: [%s]';
 
-	protected static $QUESTION_FOLLOW_SUBJ = 'New %s to a question you are following';
+	protected static $QUESTION_FOLLOW_SUBJ = 'New %s to a topic you are following';
 
 	protected static $COMMENT_REPLY_SUBJ = '%s replied to your comment';
 
@@ -449,7 +449,7 @@ site %5$s and navigating to Settings > Email preferences
 			$callable = function() use ($commentorID, $answerOwnerId, $coll, $subj, $body, $oMailer, $excludeUid){
 
 				$aUser = $coll->findOne(array('_id' => $answerOwnerId, 'ne_fa' => array('$ne' => true)), array('email'));
-					
+
 				if(!empty($aUser) && !empty($aUser['email']) ){
 					$oMailer->mail($aUser['email'], $subj, $body, null, false);
 				}
@@ -488,12 +488,12 @@ site %5$s and navigating to Settings > Email preferences
 	 */
 	protected function notifyCommentAuthor(\Lampcms\Interfaces\Post $Resource){
 		$commentorID = (int)$this->aInfo['i_uid'];
-		$parentCommentOwner = (int)$this->aInfo['inreply_uid'];	
+		$parentCommentOwner = (int)$this->aInfo['inreply_uid'];
 		$siteUrl = $this->Registry->Ini->SITE_URL;
 		d('$siteUrl: '.$siteUrl);
 		$commUrl = $siteUrl.'/q'.$Resource->getQuestionId().'/#c'.$this->aInfo['_id'];
 		d('commUrl: '.$commUrl);
-		
+
 		/**
 		 * If replied to own comment don't notify self
 		 */
@@ -576,10 +576,10 @@ site %5$s and navigating to Settings > Email preferences
 			 * and not themselve the asker //
 			 */
 			$where = array(
-				'_id' => array('$ne' => $askerID ), 
-				'a_f_t' => array('$in' => $aTags ), 
-				'a_f_u' => array('$nin' => array(0 => $askerID) ), 
-				'ne_ft' => array('$ne' => true) 
+				'_id' => array('$ne' => $askerID ),
+				'a_f_t' => array('$in' => $aTags ),
+				'a_f_u' => array('$nin' => array(0 => $askerID) ),
+				'ne_ft' => array('$ne' => true)
 			);
 
 			$cur = $coll->find($where, array('email') );
