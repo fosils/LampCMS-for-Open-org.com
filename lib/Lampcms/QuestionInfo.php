@@ -98,7 +98,7 @@ class QuestionInfo extends LampcmsObject
 				'asked' => TimeAgo::format(new \DateTime($Question['hts'])).' ago',
 				'updated' => TimeAgo::format(new \DateTime(date('r', $Question['i_lm_ts']))).' ago',
 				'views' => $this->Question['i_views'],
-		        'ans_count' => $this->Question->getAnswerCount(),
+				'ans_count' => $this->Question->getAnswerCount(),
 				'asked_label' => $Tr['Posted'],
 				'updated_label' => $Tr['Last updated'],
 				'ans_count_label'  => $Tr['Number of posts'],
