@@ -257,7 +257,7 @@ site %5$s and navigating to Settings > Email preferences
 
 	protected static $QUESTION_BY_TAG_SUBJ = 'New question tagged: [%s]';
 
-	protected static $QUESTION_FOLLOW_SUBJ = 'New %s to a question you following';
+	protected static $QUESTION_FOLLOW_SUBJ = 'New %s to a question you are following';
 
 	protected static $COMMENT_REPLY_SUBJ = '%s replied to your comment';
 
