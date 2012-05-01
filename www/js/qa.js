@@ -959,6 +959,7 @@ oSL.Regform = (function() {
 // include.js
 
 YUI({
+	maxURLLength: 1999	// my Bell ISP rejects URLs of 2000 or more characters
 	/*filter: 'raw',
 	gallery : 'gallery-2010.08.18-17-12'*/
 		}).use('node', 'dump', 'event', 'escape', 'gallery-storage-lite', 'gallery-overlay-extras', 'dd-plugin', 'anim', 'transition', 'yui2-container', 'yui2-editor', 'yui2-element', 'yui2-button', 'yui2-resize', 'yui2-animation', 'io-base', 'io-form', 'io-upload-iframe', 'json', 'jsonp', 'imageloader', 'autocomplete', 'autocomplete-filters','autocomplete-highlighters', 'gallery-node-tokeninput', 'cookie', 'cateditor', function(Y, result) {
